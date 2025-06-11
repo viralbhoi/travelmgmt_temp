@@ -9,6 +9,7 @@ import Home from "../pages/Home.jsx";
 import UserLogin from "../components/User/UserLogin.jsx";
 import AdminLogin from "../components/Admin/AdminLogin.jsx"
 import DriverLogin from "../components/Driver/DriverLogin.jsx";
+import UserTripBooking from "../components/User/UserTripBooking.jsx";
 
 export default function AppRouter() {
     const { loggedInUser } = useAppContext();
@@ -49,11 +50,7 @@ export default function AppRouter() {
             <Route
                 path="user-booking"
                 element={
-                    loggedInUser?.role === "user" ? (
-                        <TripBookingForm />
-                    ) : (
-                        <Navigate to="/" />
-                    )
+                    <UserTripBooking/>
                 }
             />
 
