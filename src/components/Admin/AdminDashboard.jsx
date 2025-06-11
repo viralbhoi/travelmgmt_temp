@@ -45,7 +45,7 @@ export default function AdminDashboard() {
     <div>
       <AdminNav/>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
           <Card title="Total Trips" value={stats.totalTrip} />
           <Card title="Pending Trips" value={stats.pendingTrip} />
           <Card title="Approved Trips" value={stats.approvedTrip} />

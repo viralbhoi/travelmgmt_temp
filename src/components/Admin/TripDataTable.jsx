@@ -5,7 +5,7 @@ export default function TripDataTable() {
     const { trips, users, drivers } = useAppContext(); 
 
     return (
-        <div>
+        <div className="p-3 ">
             <table className="w-full border-collapse border border-gray-400 mt-6">
                 <thead>
                     <tr className="bg-gray-200">
