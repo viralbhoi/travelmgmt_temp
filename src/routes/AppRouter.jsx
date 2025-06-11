@@ -13,6 +13,7 @@ import UserLogin from "../components/User/UserLogin.jsx";
 import AdminLogin from "../components/Admin/AdminLogin.jsx";
 import DriverLogin from "../components/Driver/DriverLogin.jsx";
 import UserTripBooking from "../components/User/UserTripBooking.jsx";
+import ConfirmTrip from "../components/Admin/ConfirmTrip.jsx";
 
 export default function AppRouter() {
     const { loggedInUser } = useAppContext();
@@ -68,6 +69,17 @@ export default function AppRouter() {
                         <UserTripBooking />
                     ) : (
                         <Navigate to="/user/login" />
+                    )
+                }
+            />
+
+            <Route
+                path="/admin/confirmtrip"
+                element={
+                    loggedInUser?.role === "admin" ? (
+                        <ConfirmTrip />
+                    ) : (
+                        <Navigate to="/admin/login" />
                     )
                 }
             />
