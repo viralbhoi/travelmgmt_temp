@@ -60,6 +60,17 @@ export default function AppRouter() {
                     )
                 }
             />
+
+            <Route
+                path="/user/booktrip"
+                element={
+                    loggedInUser?.role === "user" ? (
+                        <UserTripBooking />
+                    ) : (
+                        <Navigate to="/user/login" />
+                    )
+                }
+            />
         </Routes>
     );
 }
