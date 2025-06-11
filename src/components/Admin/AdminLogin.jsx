@@ -1,8 +1,48 @@
 import React, { useState } from "react";
+import { useAppContext } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const {loggedInUser, setLoggedInUser, admins} = useAppContext();
+    const navigate = useNavigate();
+
+    const handleAdminLogin = (e) => {
+        e.preventDefault();
+
+        if(!email || !password){
+            alert("No input field should be empty");
+            return false;
+        }
+
+        if(loggedInUser){
+            localStorage.removeItem(loggedInUser);
+        }
+
+        const user = {
+            role: "admin",
+            email: email,
+            password: password
+        }
+
+        let tempUser = admins.find((u) => u.email === user.email);
+
+        if(!tempUser){
+            alert("No such Admin exist!"); 
+            return false;
+        }else if(tempUser.password != user.password){
+            alert("Oops!, Wrong Password");
+            return false;
+        }
+
+        setLoggedInUser(user);
+
+        setEmail("");
+        setPassword("");
+
+        navigate("/admin/dashboard");
+    }
 
     return (
         <div className="mx-0 w-screen h-screen bg-purple-300 flex flex-col justify-items-start">
@@ -20,7 +60,7 @@ export default function AdminLogin() {
             </div>
 
             <div className="bg-purple-600 p-5 h-[80%]">
-                <form>
+                <form onSubmit={handleAdminLogin}>
                     <div className="login">
                         <div className="mb-2">
                             <label
@@ -60,7 +100,7 @@ export default function AdminLogin() {
                             />
                         </div>
 
-                        <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl">
+                        <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl" type="submit">
                             Login
                         </button>
                     </div>

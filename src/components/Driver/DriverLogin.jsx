@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useAppContext } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function DriverLogin() {
     const [islogin, setisLogin] = useState(true);
@@ -6,7 +8,74 @@ export default function DriverLogin() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [vehicle, setVehicle] = useState("Bus");
+    const { drivers, setDrivers, loggedInUser, setLoggedInUser } = useAppContext();
+    const navigate = useNavigate();
 
+    const handleDriverSubmit = (e) =>{
+        e.preventDefault();
+
+        if (!email || !password) {
+            alert("No input field should be empty");
+            return false;
+        }
+
+        if (loggedInUser) {
+            localStorage.removeItem(loggedInUser);
+        }
+        if (islogin) {
+
+            const user = {
+                role: "driver",
+                email: email,
+                password: password,
+                vehicleType : vehicle.toLowerCase()
+            };
+
+            let tempUser = drivers.find((u) => u.email === user.email);
+
+            if (!tempUser) {
+                alert("No such User exist!");
+                return false;
+            } else if (tempUser.password != user.password) {
+                alert("Oops!, Wrong Password");
+                return false;
+            }
+
+            setLoggedInUser(user);
+
+            navigate("/driver/dashboard");
+        } else {
+            if (!username) {
+                alert("No input field should be empty");
+                return false;
+            }
+
+            if (drivers.some((u) => u.email === email)) {
+                alert("Email already exists!");
+                return;
+            }
+
+            const user = {
+                email: email,
+                id: drivers.length > 0 ? drivers[drivers.length - 1].id + 1 : 1,
+                password: password,
+                username: username,
+                vehicleType: vehicle
+            };
+
+            setDrivers((prev) => [...prev, user]);
+
+            alert("Successfully Signup, redirecting to Login Page");
+
+            navigate("/driver/login");
+        }
+
+        setEmail("");
+        setVehicle("Bus");
+        setPassword("");
+        setisLogin(true);
+        setUsername("");
+    }
     return (
         <div className="mx-0 w-screen h-screen bg-purple-300 flex flex-col justify-items-start">
             <div className="flex justify-between items-center px-4 py-2 h-[20%]">
@@ -39,7 +108,7 @@ export default function DriverLogin() {
             </div>
 
             <div className="bg-purple-600 p-5 h-[80%]">
-                <form>
+                <form onSubmit={handleDriverSubmit}>
                     {islogin ? (
                         <div className="login">
                             <div className="mb-2">

@@ -1,10 +1,80 @@
 import React, { useState } from "react";
+import { useAppContext } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function UserLogin() {
     const [islogin, setisLogin] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    const { users, setUsers, loggedInUser, setLoggedInUser } = useAppContext();
+    const navigate = useNavigate();
+
+    const handleUserLogin = (e) => {
+        e.preventDefault();
+
+        if (!email || !password) {
+            alert("No input field should be empty");
+            return false;
+        }
+
+        // console.log(users);
+        // return;
+
+        if (loggedInUser) {
+            localStorage.removeItem(loggedInUser);
+        }
+        if (islogin) {
+
+            const user = {
+                role: "user",
+                email: email,
+                password: password,
+            };
+
+            let tempUser = users.find((u) => u.email === user.email);
+
+            if (!tempUser) {
+                alert("No such User exist!");
+                return false;
+            } else if (tempUser.password != user.password) {
+                alert("Oops!, Wrong Password");
+                return false;
+            }
+
+            setLoggedInUser(user);
+
+            navigate("/user/dashboard");
+        } else {
+            if (!username) {
+                alert("No input field should be empty");
+                return false;
+            }
+
+            if (users.some((u) => u.email === email)) {
+                alert("Email already exists!");
+                return;
+            }
+
+            const user = {
+                email: email,
+                id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
+                password: password,
+                username: username,
+            };
+
+            setUsers((prev) => [...prev, user]);
+
+            alert("Successfully Signup, redirecting to Login Page");
+
+            navigate("/user/login");
+        }
+
+        setEmail("");
+        setPassword("");
+        setisLogin(true);
+        setUsername("");
+    };
 
     return (
         <div className="mx-0 w-screen h-screen bg-purple-300 flex flex-col justify-items-start">
@@ -38,7 +108,7 @@ export default function UserLogin() {
             </div>
 
             <div className="bg-purple-600 p-5 h-[80%]">
-                <form>
+                <form onSubmit={handleUserLogin}>
                     {islogin ? (
                         <div className="login">
                             <div className="mb-2">
