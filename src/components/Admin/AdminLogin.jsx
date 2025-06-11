@@ -45,7 +45,7 @@ export default function AdminLogin() {
     }
 
     return (
-        <div className="mx-0 w-screen h-screen bg-purple-300 flex flex-col justify-items-start">
+        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col justify-items-start">
             <div className="flex justify-between items-center px-4 py-2 h-[20%]">
                 <h2>Travel Management System</h2>
                 <h3>Admin Login</h3>
@@ -53,13 +53,13 @@ export default function AdminLogin() {
 
             <div className="px-5 ">
                 <button
-                    className={`bg-purple-600 text-white mx-2 p-3 !rounded-t-xl`}
+                    className={`bg-gray-600 text-white mx-2 p-3 !rounded-t-xl`}
                 >
                     Login
                 </button>
             </div>
 
-            <div className="bg-purple-600 p-5 h-[80%]">
+            <div className="bg-gray-600 p-5 h-[80%]">
                 <form onSubmit={handleAdminLogin}>
                     <div className="login">
                         <div className="mb-2">
@@ -100,7 +100,7 @@ export default function AdminLogin() {
                             />
                         </div>
 
-                        <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl" type="submit">
+                        <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl" type="submit">
                             Login
                         </button>
                     </div>

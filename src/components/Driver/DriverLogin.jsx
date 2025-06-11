@@ -28,7 +28,6 @@ export default function DriverLogin() {
                 role: "driver",
                 email: email,
                 password: password,
-                vehicleType : vehicle.toLowerCase()
             };
 
             let tempUser = drivers.find((u) => u.email === user.email);
@@ -77,7 +76,7 @@ export default function DriverLogin() {
         setUsername("");
     }
     return (
-        <div className="mx-0 w-screen h-screen bg-purple-300 flex flex-col justify-items-start">
+        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col justify-items-start">
             <div className="flex justify-between items-center px-4 py-2 h-[20%]">
                 <h2>Travel Management System</h2>
                 <h3> Driver Login/Signup</h3>
@@ -87,8 +86,8 @@ export default function DriverLogin() {
                 <button
                     className={`${
                         islogin
-                            ? "bg-purple-600 text-white"
-                            : "bg-purple-400 text-black"
+                            ? "bg-gray-600 text-white"
+                            : "bg-gray-400 text-black"
                     } mx-2 p-3 !rounded-t-xl`}
                     onClick={() => setisLogin(true)}
                 >
@@ -98,8 +97,8 @@ export default function DriverLogin() {
                 <button
                     className={`${
                         islogin
-                            ? "bg-purple-400 text-black"
-                            : "bg-purple-600  text-white"
+                            ? "bg-gray-400 text-black"
+                            : "bg-gray-600  text-white"
                     } mx-2 p-3 !rounded-t-xl`}
                     onClick={() => setisLogin(false)}
                 >
@@ -107,7 +106,7 @@ export default function DriverLogin() {
                 </button>
             </div>
 
-            <div className="bg-purple-600 p-5 h-[80%]">
+            <div className="bg-gray-600 p-5 h-[80%]">
                 <form onSubmit={handleDriverSubmit}>
                     {islogin ? (
                         <div className="login">
@@ -151,21 +150,7 @@ export default function DriverLogin() {
                                 />
                             </div>
 
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Vehicle:{" "}
-                                </label>
-                                <select name="vehicle" id="vehicle" value={vehicle} onChange={(e) => setVehicle(e.target.value)} className="bg-white p-2 mx-2 rounded-xl w-[20%]">
-                                    <option value="Bus">Bus</option>
-                                    <option value="Car">Car</option>
-                                    <option value="Van">Van</option>
-                                </select>
-                            </div>
-
-                            <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl">
+                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
                                 Login
                             </button>
                         </div>
@@ -246,7 +231,7 @@ export default function DriverLogin() {
                                 </select>
                             </div>
 
-                            <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl">
+                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
                                 Signup
                             </button>
                         </div>

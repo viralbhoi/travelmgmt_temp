@@ -77,7 +77,7 @@ export default function UserLogin() {
     };
 
     return (
-        <div className="mx-0 w-screen h-screen bg-purple-300 flex flex-col justify-items-start">
+        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col justify-items-start">
             <div className="flex justify-between items-center px-4 py-2 h-[20%]">
                 <h2>Travel Management System</h2>
                 <h3>Login/Signup</h3>
@@ -87,8 +87,8 @@ export default function UserLogin() {
                 <button
                     className={`${
                         islogin
-                            ? "bg-purple-600 text-white"
-                            : "bg-purple-400 text-black"
+                            ? "bg-gray-600 text-white"
+                            : "bg-gray-400 text-black"
                     } mx-2 p-3 !rounded-t-xl`}
                     onClick={() => setisLogin(true)}
                 >
@@ -98,8 +98,8 @@ export default function UserLogin() {
                 <button
                     className={`${
                         islogin
-                            ? "bg-purple-400 text-black"
-                            : "bg-purple-600  text-white"
+                            ? "bg-gray-400 text-black"
+                            : "bg-gray-600  text-white"
                     } mx-2 p-3 !rounded-t-xl`}
                     onClick={() => setisLogin(false)}
                 >
@@ -107,7 +107,7 @@ export default function UserLogin() {
                 </button>
             </div>
 
-            <div className="bg-purple-600 p-5 h-[80%]">
+            <div className="bg-gray-600 p-5 h-[80%]">
                 <form onSubmit={handleUserLogin}>
                     {islogin ? (
                         <div className="login">
@@ -151,7 +151,7 @@ export default function UserLogin() {
                                 />
                             </div>
 
-                            <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl">
+                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
                                 Login
                             </button>
                         </div>
@@ -218,7 +218,7 @@ export default function UserLogin() {
                                 />
                             </div>
 
-                            <button className="bg-purple-300 text-black p-2 px-4 text-3xl !rounded-2xl">
+                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
                                 Signup
                             </button>
                         </div>
