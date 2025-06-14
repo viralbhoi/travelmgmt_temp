@@ -19,7 +19,7 @@ export default function UserNav() {
             <nav className="flex items-center space-x-4">
                 <Link
                     to="/user/dashboard"
-                    className="px-4 py-2 text-black rounded-xl hover:bg-purple-700 hover:text-white transition duration-500 ease-in-out hover:scale-105"
+                    className="px-4 py-2 text-black rounded-xl hover:bg-slate-100 transition duration-500 ease-in-out hover:scale-105"
                     style={{textDecoration:"none"}}
                 >
                     Dashboard
@@ -27,7 +27,7 @@ export default function UserNav() {
 
                 <Link
                     to="/user/booktrip"
-                    className="px-4 py-2 text-black rounded-xl hover:bg-purple-700 hover:text-white transition duration-500 ease-in-out hover:scale-105"
+                    className="px-4 py-2 text-black rounded-xl hover:bg-slate-100 transition duration-500 ease-in-out hover:scale-105"
                     style={{textDecoration:"none"}}
                 >
                     Booking

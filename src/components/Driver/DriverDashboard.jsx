@@ -35,11 +35,7 @@ export default function DriverDashboard() {
                 </button>
             </div>
 
-            {/* Vehicle Info */}
             <VehicleInfor vehicleDetail={currentDriver?.vehicleType || "Not Assigned"}/>
-            
-
-            {/* Trip Table */}
             <TripInfo/>
             
         </div>

@@ -1,45 +1,71 @@
-import React from 'react'
+import React from "react";
 import { useAppContext } from "../../context/AppContext";
 
 export default function UserTripData() {
-    const { trips, users, drivers ,loggedInUser} = useAppContext(); 
+    const { trips, users, drivers, loggedInUser } = useAppContext();
 
-     const userTrips = trips.filter(
+    const userTrips = trips.filter(
         (trip) => trip.userEmail === loggedInUser.email
     );
-  return (
-    <div className="p-3 ">
-            <table className="w-full border-collapse border border-gray-400 mt-6">
-                <thead>
-                    <tr className="bg-gray-200">
-                        <th className="border border-gray-400 px-4 py-2">Trip ID</th>
-                        <th className="border border-gray-400 px-4 py-2">User</th>
-                        <th className="border border-gray-400 px-4 py-2">Start Date</th>
-                        <th className="border border-gray-400 px-4 py-2">End Date</th>
-                        <th className="border border-gray-400 px-4 py-2">Pickup → Destination</th>
-                        <th className="border border-gray-400 px-4 py-2">Driver</th>
-                        <th className="border border-gray-400 px-4 py-2">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userTrips.map((trip, index) => {
-                        const user = users.find((u) => u.email === trip.userEmail);
-                        const driver = drivers.find((d) => d.email === trip.driverEmail);
 
-                        return (
-                            <tr key={index} className="text-center">
-                                <td className="border border-gray-400 px-4 py-2">{trip.id}</td>
-                                <td className="border border-gray-400 px-4 py-2">{user?.username || "N/A"}</td>
-                                <td className="border border-gray-400 px-4 py-2">{trip.startDate}</td>
-                                <td className="border border-gray-400 px-4 py-2">{trip.endDate}</td>
-                                <td className="border border-gray-400 px-4 py-2">{trip.pickup} → {trip.destination}</td>
-                                <td className="border border-gray-400 px-4 py-2">{driver?.username || "Not Assigned"}</td>
-                                <td className={`border border-gray-400 px-4 py-2 capitalize ${trip.status === "approved" ? "bg-green-500" : trip.status === "rejected" ? "bg-red-500" : "bg-yellow-300"}`}>{trip.status}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+    return (
+        <div className="p-3 flex flex-col gap-3 justify-center m-auto">
+            <h2 className="text-xl font-medium text-shadow-sm shadow-md p-4 bg-slate-700 rounded-2xl text-center text-slate-50">User Trip Information</h2>
+            {userTrips.map((trip, index) => {
+                return (
+                    <div
+                        key={index}
+                        className="flex flex-wrap gap-2 flex-col md:flex-row justify-evenly p-4 m-1 bg-slate-300 rounded-2xl shadow-md"
+                    >
+                        <div className="flex flex-col justify-center">
+                            <p>id:</p>
+                            <p>{trip.id}</p>
+                        </div>
+
+                        <div className="flex flex-col justify-center">
+                            <p>
+                                {trip.pickup} → {trip.destination}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-2 justify-center">
+                            <p>Driver: </p>
+                            <p>
+                                {trip.status === "approved"
+                                    ? drivers.find(
+                                          (driver) =>
+                                              driver.email === trip.driverEmail
+                                      )?.email
+                                    : "Not Assigned"}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-2 justify-center">
+                            <p>Cost : </p>
+                            <p>₹ {trip.cost || 0}</p>
+                        </div>
+
+                        <div className="flex flex-col justify-center">
+                            {trip.status === "rejected" ? (
+                                <p className="bg-red-500 text-slate-50 p-4 rounded-2xl">
+                                    {" "}
+                                    Rejected{" "}
+                                </p>
+                            ) : trip.status === "approved" ? (
+                                <p className="bg-green-500 text-slate-950 p-4 rounded-2xl">
+                                    {" "}
+                                    Rejected{" "}
+                                </p>
+                            ) : (
+                                <p className="bg-yellow-300 text-slate-950 p-4 rounded-2xl">
+                                    {" "}
+                                    Pending{" "}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                );
+            })}
         </div>
-  )
+    );
 }
