@@ -1,47 +1,75 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 
-
 export default function AdminNav() {
-    const {setLoggedInUser} = useAppContext();
+    const { setLoggedInUser } = useAppContext();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        setLoggedInUser(null);
-        alert("You Logged Out");
-        navigate("/admin/login");
-    }
     return (
-        <div className="flex justify-between items-center px-6 py-4">
-            <h2 className="text-2xl font-semibold text-black">Admin Panel</h2>
+        <div className="hidden w-[100%] md:block  md:w-[20%] bg-slate-950 text-white h-screen">
+            <h2 className="text-xl font-bold mb-6 p-3">Admin Panel</h2>
 
-            <nav className="flex items-center space-x-4">
-                <Link
+            <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
+                <NavLink
                     to="/admin/dashboard"
-                    className="px-4 py-2 text-black rounded-xl hover:bg-gray-200 transition duration-500 ease-in-out hover:scale-105"
-                    style={{textDecoration:"none"}}
+                    className={({ isActive }) =>
+                        `py-4 w-full px-3 transition-all duration-200 ease-linear ${
+                            isActive
+                                ? "bg-slate-900 text-slate-50 font-semibold"
+                                : "hover:bg-slate-900"
+                        }`
+                    }
+                    style={{textDecoration:"none",color:"#F8FAFC"}}
                 >
                     Dashboard
-                </Link>
-
-                <Link
-                    to="/admin/confirmtrip"
-                    className="px-4 py-2 text-black rounded-xl hover:bg-gray-200 transition duration-500 ease-in-out hover:scale-105"
-                    style={{textDecoration:"none"}}
+                </NavLink>
+                <NavLink
+                    to="/admin/users"
+                    className={({ isActive }) =>
+                        `py-4 w-full px-3 transition-all duration-200 ease-linear ${
+                            isActive
+                                ? "bg-slate-900 text-slate-50 font-semibold"
+                                : "hover:bg-slate-900"
+                        }`
+                    }
+                    style={{textDecoration:"none",color:"#F8FAFC"}}
                 >
-                    Booking Confirmation
-                </Link>
-
-                <Link
-                    to="/admin/manageuser"
-                    className="px-4 py-2 text-black rounded-xl hover:bg-gray-200 transition duration-500 ease-in-out hover:scale-105"
-                    style={{textDecoration:"none"}}
+                    Confirm Trips
+                </NavLink>
+                <NavLink
+                    to="/admin/users"
+                    className={({ isActive }) =>
+                        `py-4 w-full px-3 transition-all duration-200 ease-linear ${
+                            isActive
+                                ? "bg-slate-900 text-slate-50 font-semibold"
+                                : "hover:bg-slate-900"
+                        }`
+                    }
+                    style={{textDecoration:"none",color:"#F8FAFC"}}
                 >
-                    User Management
-                </Link>
-
-                <button className="px-4 py-2 bg-red-500 text-white text-lg !rounded-xl" onClick={handleLogout}>
+                    All Trips
+                </NavLink>
+                <NavLink
+                    to="/admin/trips"
+                    className={({ isActive }) =>
+                        `py-4 w-full px-3 transition-all duration-200 ease-linear ${
+                            isActive
+                                ? "bg-slate-900 text-slate-50 font-semibold"
+                                : "hover:bg-slate-900"
+                        }`
+                    }
+                    style={{textDecoration:"none",color:"#F8FAFC"}}
+                >
+                    Manage Packages
+                </NavLink>
+                <button
+                    onClick={() => {
+                        setLoggedInUser(null);
+                        navigate("/login");
+                    }}
+                    className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
+                >
                     Logout
                 </button>
             </nav>

@@ -42,21 +42,21 @@ export default function AdminDashboard() {
 
   
   return (
-    <div>
+    <div className='flex flex-wrap'>
       <AdminNav/>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
-          <Card title="Total Trips" value={stats.totalTrip} />
-          <Card title="Pending Trips" value={stats.pendingTrip} />
-          <Card title="Approved Trips" value={stats.approvedTrip} />
-          <Card title="Rejected Trips" value={stats.rejectedTrip} />
-          <Card title="Total Users" value={stats.totalUser} />
-          <Card title="User Trips" value={stats.totalUserTrip} />
-          <Card title="Total Drivers" value={stats.totalDriver} />
-          <Card title="Driver Trips" value={stats.totalDriverTrip} />
+      <div className="w-[100%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
+          <Card title="Total Trips" value={stats.totalTrip} iconStyle="fa fa-ticket"/>
+          <Card title="Pending Trips" value={stats.pendingTrip} iconStyle="fa fa-clock-o"/>
+          <Card title="Approved Trips" value={stats.approvedTrip} iconStyle="fa fa-check-square"/>
+          <Card title="Rejected Trips" value={stats.rejectedTrip} iconStyle="fa fa-times"/>
+          <Card title="Total Users" value={stats.totalUser} iconStyle="fa fa-users"/>
+          <Card title="User Trips" value={stats.totalUserTrip} iconStyle="fa fa-users"/>
+          <Card title="Total Drivers" value={stats.totalDriver} iconStyle="fa fa-taxi"/>
+          <Card title="Driver Trips" value={stats.totalDriverTrip} iconStyle="fa fa-users"/>
       </div>
 
-      <TripDataTable/>
+      {/* <TripDataTable/> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserNav from "./userNav";
 import { useAppContext } from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +7,26 @@ export default function UserTripBooking() {
     const [vehicle, setVehicle] = useState("bus");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [pickup, setPickup] = useState("");
-    const [destination, setDestination] = useState("");
+    const [pickup, setPickup] = useState("Ahmedabad");
+    const [destination, setDestination] = useState("Mumbai");
+    const [cost, setCost] = useState(0);
+    const { loggedInUser, trips, setTrips, city, cityDistanceData, costPerKM } =
+        useAppContext();
+
+    useEffect(() => {
+        if (!pickup || !destination || !vehicle) return;
+
+        const key1 = `${pickup}-${destination}`;
+        const key2 = `${destination}-${pickup}`;
+        const distance = cityDistanceData[key1] ?? cityDistanceData[key2] ?? 0;
+
+        const rate = costPerKM?.[vehicle] || 0;
+        const price = distance * rate;
+
+        setCost(price);
+    }, [pickup, destination, vehicle]);
+
     const navigate = useNavigate();
-    const { loggedInUser, trips, setTrips } = useAppContext();
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -35,6 +51,7 @@ export default function UserTripBooking() {
             endDate,
             pickup,
             destination,
+            cost: cost,
         };
 
         setTrips((prev) => [...prev, tripData]);
@@ -45,77 +62,199 @@ export default function UserTripBooking() {
     };
 
     return (
-        <div className="mx-0 w-screen h-screen ">
+        <div className="mx-0 w-screen h-screen box-border">
             <UserNav />
 
             <div className="px-5 ">
                 <form onSubmit={handleOnSubmit}>
-                    <div>
-                        <label htmlFor="vehicle" className="w-[12%] bg-gray-100 px-2 py-3 mr-2 rounded-t-2xl">Vehicle:</label>
-                        <select
-                            name="vehicle"
-                            id="vehicle"
-                            value={vehicle}
-                            onChange={(e) => setVehicle(e.target.value)}
-                            className="p-2 py-3 bg-gray-200 w-[20%] border-0 text-gray-900 rounded-t-2xl"
+                    <div className="flex flex-col justify-center items-center">
+                        <h2 className="text-3xl bg-slate-500 text-center p-4 rounded-2xl text-slate-50 w-[100%]">Book A trip</h2>
+                        <div className=" w-[40%] my-2">
+                        <label> <h2>Vehicle:</h2> </label>
+                        <div className="flex gap-4 my-4">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="vehicle"
+                                    value="bus"
+                                    checked={vehicle === "bus"}
+                                    onChange={() => setVehicle("bus")}
+                                    className="hidden"
+                                />
+                                <div
+                                    className={`px-4 py-2 rounded-2xl border-none
+                                    ${
+                                        vehicle === "bus"
+                                            ? "bg-slate-700 text-white"
+                                            : "bg-slate-200 text-slate-800"
+                                    }`}
+                                >
+                                    <i
+                                        className="fa fa-bus"
+                                        aria-hidden="true"
+                                    ></i>
+                                    {"  "}Bus
+                                </div>
+                            </label>
+
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="vehicle"
+                                    value="car"
+                                    checked={vehicle === "car"}
+                                    onChange={() => setVehicle("car")}
+                                    className="hidden"
+                                />
+                                <div
+                                    className={`cursor-pointer px-4 py-2 rounded-2xl border-none
+                                    ${
+                                        vehicle === "car"
+                                            ? "bg-slate-700 text-white"
+                                            : "bg-slate-200 text-slate-800"
+                                    }`}
+                                >
+                                    <i
+                                        className="fa fa-car"
+                                        aria-hidden="true"
+                                    ></i>
+                                    {"  "}Car
+                                </div>
+                            </label>
+
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="vehicle"
+                                    value="van"
+                                    checked={vehicle === "van"}
+                                    onChange={() => setVehicle("van")}
+                                    className="hidden"
+                                />
+                                <div
+                                    className={`cursor-pointer px-4 py-2 rounded-2xl border-none 
+                                    ${
+                                        vehicle === "van"
+                                            ? "bg-slate-700 text-white"
+                                            : "bg-slate-200 text-slate-800"
+                                    }`}
+                                >
+                                    <i
+                                        className="fa fa-taxi"
+                                        aria-hidden="true"
+                                    ></i>
+                                    {"  "}Van
+                                </div>
+                            </label>
+                        </div>
+                        </div>
+
+                        <div className="flex w-[40%] my-2">
+                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-l-2xl border-r">
+                                <label
+                                    htmlFor="startDate"
+                                    className="px-2 py-3 block"
+                                >
+                                    Start date:
+                                </label>
+                                <input
+                                    type="date"
+                                    name="startDate"
+                                    id="startDate"
+                                    value={startDate}
+                                    onChange={(e) =>
+                                        setStartDate(e.target.value)
+                                    }
+                                    className="p-2 py-3 border-0 text-gray-900 block"
+                                />
+                            </div>
+
+                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-r-2xl border-l">
+                                <label
+                                    htmlFor="endDate"
+                                    className="px-2 py-3 block"
+                                >
+                                    End date:
+                                </label>
+                                <input
+                                    type="date"
+                                    name="endDate"
+                                    id="endDate"
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                    className="p-2 py-3 border-0 text-gray-900 block"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex w-[40%] my-2">
+                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-l-2xl border-r">
+                                <label
+                                    htmlFor="pickup"
+                                    className="px-2 py-3 block"
+                                >
+                                    Pickup:
+                                </label>
+                                <select
+                                    name="pickup"
+                                    id="pickup"
+                                    value={pickup}
+                                    onChange={(e) => setPickup(e.target.value)}
+                                    className="p-2 py-3 border-0 text-gray-900 block"
+                                >
+                                    {city.map((c, idx) => {
+                                        return (
+                                            <option value={c} key={idx}>
+                                                {c}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            </div>
+
+                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-r-2xl border-l">
+                                <label
+                                    htmlFor="destination"
+                                    className="px-2 py-3 block"
+                                >
+                                    Destination:
+                                </label>
+                                <select
+                                    name="destination"
+                                    id="destination"
+                                    value={destination}
+                                    onChange={(e) =>
+                                        setDestination(e.target.value)
+                                    }
+                                    className="p-2 py-3 border-0 text-gray-900 block"
+                                >
+                                    {city.map((c, idx) => {
+                                        return (
+                                            <option value={c} key={idx}>
+                                                {c}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="w-[40%] bg-slate-700 p-4 m-2 rounded-2xl text-slate-50">
+                            <p>Cost:</p>
+                            {pickup && destination
+                                ? pickup === destination
+                                    ? "Pickup and Destination same not possible"
+                                    : `₹ ${cost}`
+                                : "Please Enter Pickup and Destination"}
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="p-3 block bg-gray-700 text-white m-2 !rounded-2xl"
                         >
-                            <option value="bus">Bus</option>
-                            <option value="car">Car</option>
-                            <option value="van">van</option>
-                        </select>
+                            Book a trip!
+                        </button>
                     </div>
-
-                    <div>
-                        <label htmlFor="startDate" className="w-[12%] bg-gray-100 px-2 py-3 mr-2">Start date:</label>
-                        <input
-                            type="date"
-                            name="startDate"
-                            id="startDate"
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            className="p-2 py-3 bg-gray-200 w-[20%] border-0 text-gray-900"
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="endDate" className="w-[12%] bg-gray-100 px-2 py-3 mr-2">End date:</label>
-                        <input
-                            type="date"
-                            name="endDate"
-                            id="endDate"
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            className="p-2 py-3 bg-gray-200 w-[20%] border-0 text-gray-900"
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="pickup" className="w-[12%] bg-gray-100 px-2 py-3 mr-2">Pickup:</label>
-                        <input
-                            type="text"
-                            name="pickup"
-                            id="pickup"
-                            value={pickup}
-                            onChange={(e) => setPickup(e.target.value)}
-                            className="p-2 py-3 bg-gray-200 w-[20%] border-0 text-gray-900"
-                            placeholder="Enter Pickup city"
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="destination" className="w-[12%] bg-gray-100 px-2 py-3 mr-2 rounded-b-2xl">Destination:</label>
-                        <input
-                            type="text"
-                            name="destination"
-                            id="destination"
-                            value={destination}
-                            onChange={(e) => setDestination(e.target.value)}
-                            className="p-2 py-3 bg-gray-200 w-[20%] border-0 text-gray-900 rounded-b-2xl"
-                            placeholder="Enter Destination city"
-                        />
-                    </div>
-
-                    <button type="submit" className="p-3 block bg-gray-700 text-white m-2 !rounded-2xl">Book a trip!</button>
                 </form>
             </div>
         </div>
