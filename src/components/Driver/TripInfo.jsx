@@ -1,54 +1,103 @@
-import React from 'react'
-import { useAppContext } from '../../context/AppContext';
+import React, { useEffect, useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 export default function TripInfo() {
-    const { loggedInUser, setLoggedInUser, trips, drivers, users } = useAppContext();
-    const driverTrips = trips.filter(
-        (trip) => trip.driverEmail === loggedInUser.email
+    const { loggedInUser, trips, setTrips, drivers, users } = useAppContext();
+    const [selectedTripID, setSelectedTripID] = useState(null);
+    const [selectedDriverEmail, setSelectedDriverEmail] = useState(
+        loggedInUser.email
     );
-  return (
-    <div className="p-3">
-                <table className="w-full border-collapse border border-gray-400 mt-6">
-                    <thead>
-                        <tr className="bg-gray-200">
-                            <th className="border border-gray-400 px-4 py-2">Trip ID</th>
-                            <th className="border border-gray-400 px-4 py-2">User</th>
-                            <th className="border border-gray-400 px-4 py-2">Start Date</th>
-                            <th className="border border-gray-400 px-4 py-2">End Date</th>
-                            <th className="border border-gray-400 px-4 py-2">Pickup → Destination</th>
-                            <th className="border border-gray-400 px-4 py-2">Driver</th>
-                            <th className="border border-gray-400 px-4 py-2">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {driverTrips.map((trip, index) => {
-                            const user = users.find((u) => u.email === trip.userEmail);
-                            const driver = drivers.find((d) => d.email === trip.driverEmail);
 
-                            return (
-                                <tr key={index} className="text-center">
-                                    <td className="border border-gray-400 px-4 py-2">{trip.id}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{user?.username || "N/A"}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{trip.startDate}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{trip.endDate}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{trip.pickup} → {trip.destination}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{driver?.username || "Not Assigned"}</td>
-                                    <td
-                                        className={`border border-gray-400 px-4 py-2 capitalize ${
-                                            trip.status === "approved"
-                                                ? "bg-green-500"
-                                                : trip.status === "rejected"
-                                                ? "bg-red-500"
-                                                : "bg-yellow-300"
-                                        }`}
-                                    >
-                                        {trip.status}
-                                    </td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+    const[driverTrips, setDriverTrips] = useState([]);
+
+
+    useEffect(() => {
+        setDriverTrips(trips.filter(
+            (trip) => trip.driverEmail === loggedInUser.email
+        )) 
+    }, [trips]);
+
+    const handleApproveTrip = (tripID) => {
+        if (tripID !== selectedTripID || !selectedDriverEmail) {
+            alert("Please select a driver before approving.");
+            return;
+        }
+
+        const updatedTrips = trips.map((trip) =>
+            trip.id === tripID
+                ? {
+                      ...trip,
+                      status: "approved",
+                      driverEmail: selectedDriverEmail,
+                  }
+                : trip
+        );
+
+        setTrips(updatedTrips);
+        setSelectedDriverEmail("");
+        setSelectedTripID(null);
+    };
+
+    const handleRejectTrip = (tripID) => {
+        const updatedTrips = trips.map((trip) =>
+            trip.id === tripID
+                ? {
+                      ...trip,
+                      status: "pending",
+                  }
+                : trip
+        );
+
+        setTrips(updatedTrips);
+    };
+
+    return driverTrips.map((trip, index) => {
+        return (
+            <div className="p-3">
+                <div
+                    key={index}
+                    className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 m-2 bg-slate-300 rounded-2xl shadow-md"
+                >
+                    <div className="flex flex-col justify-center">
+                        <p>id:</p>
+                        <p>{trip.id}</p>
+                    </div>
+
+                    <div className="flex flex-col justify-center">
+                        <p>
+                            {trip.pickup} → {trip.destination}
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col gap-2 justify-center">
+                        <p>User: </p>
+                        <p>
+                            {users.find((user) => user.email === trip.userEmail)
+                                ?.email || "N/A"}
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col gap-2 justify-center">
+                        <p>Cost : </p>
+                        <p>₹ {trip.cost || 0}</p>
+                    </div>
+
+                    <div className="flex flex-col gap-2 justify-center">
+                        <button
+                            onClick={() => handleApproveTrip(trip.id)}
+                            className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
+                        >
+                            Approved
+                        </button>
+                        <button
+                            onClick={() => handleRejectTrip(trip.id)}
+                            className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                        >
+                            Reject
+                        </button>
+                    </div>
+                </div>
             </div>
-  )
+        );
+    });
 }
