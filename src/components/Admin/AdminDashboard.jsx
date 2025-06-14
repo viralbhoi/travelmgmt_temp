@@ -18,6 +18,7 @@ export default function AdminDashboard() {
     totalUserTrip: 0,
     totalDriver: 0,
     totalDriverTrip: 0,
+    totalRevenue:0,
   });
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function AdminDashboard() {
 
     const userTrips = trips.filter((t) => t.userEmail).length;
     const driverTrips = trips.filter((t) => t.driverEmail).length;
+    const revenue = trips.reduce((total, trip) => total + (Number(trip.cost) || 0), 0);
 
     setStats({
       totalTrip: trips.length,
@@ -37,6 +39,7 @@ export default function AdminDashboard() {
       totalUserTrip: userTrips,
       totalDriver: drivers.length,
       totalDriverTrip: driverTrips,
+      totalRevenue: revenue
     });
   }, [trips, users, drivers]);
 
@@ -47,6 +50,7 @@ export default function AdminDashboard() {
 
       <div className="w-[100%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
           <Card title="Total Trips" value={stats.totalTrip} iconStyle="fa fa-ticket"/>
+          <Card title="Total Revenue" value={stats.totalRevenue} iconStyle="fa fa-money"/>
           <Card title="Pending Trips" value={stats.pendingTrip} iconStyle="fa fa-clock-o"/>
           <Card title="Approved Trips" value={stats.approvedTrip} iconStyle="fa fa-check-square"/>
           <Card title="Rejected Trips" value={stats.rejectedTrip} iconStyle="fa fa-times"/>

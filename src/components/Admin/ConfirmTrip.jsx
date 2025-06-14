@@ -19,7 +19,7 @@ export default function ConfirmTrip() {
             trip.id === tripID
                 ? {
                       ...trip,
-                      status: "approved",
+                      status: "assigned",
                       driverEmail: selectedDriverEmail,
                   }
                 : trip
@@ -75,33 +75,144 @@ export default function ConfirmTrip() {
     };
 
     return (
-        <div>
+        <div className="flex ">
             <AdminNav />
-            <div className="p-4">
-                <h2 className="text-xl font-semibold mb-4">Confirm Pending Requests</h2>
-                <table className="w-full border-collapse border border-gray-400">
+            <div className="p-4 w-[100%] md:w-[80%]">
+                <h2 className="text-xl font-semibold mb-4">
+                    Confirm Pending Requests
+                </h2>
+
+                <div className="w-[100%]">
+                    {pendingTrips.length === 0 ? (<p>
+                        No pending Trips right now.
+                    </p>) : null }
+                    {pendingTrips.map((trip, index) => {
+                        const user = users.find(
+                            (u) => u.email === trip.userEmail
+                        );
+                        const availableDrivers = getAvailableDrivers(trip);
+
+                        return (
+                            <div
+                                key={index}
+                                className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 m-2 bg-slate-300 rounded-2xl shadow-md"
+                            >
+                                <div className="flex flex-col justify-center">
+                                    <p>id:</p>
+                                    <p>{trip.id}</p>
+                                </div>
+
+                                <div className="flex flex-col justify-center">
+                                    <p>
+                                        {trip.pickup} → {trip.destination}
+                                    </p>
+                                </div>
+
+                                <div className="flex flex-col gap-2 justify-center">
+                                    <p>Driver: </p>
+                                    <select
+                                        name="driver"
+                                        value={
+                                            trip.id === selectedTripID
+                                                ? selectedDriverEmail
+                                                : ""
+                                        }
+                                        onChange={(e) => {
+                                            setSelectedTripID(trip.id);
+                                            setSelectedDriverEmail(
+                                                e.target.value
+                                            );
+                                        }}
+                                        className="border-none px-2 py-1 rounded-2xl bg-slate-100"
+                                    >
+                                        <option value="">
+                                            -- Select Driver --
+                                        </option>
+                                        {availableDrivers.map((driver, i) => (
+                                            <option
+                                                key={i}
+                                                value={driver.email}
+                                            >
+                                                {driver.username}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                <div className="flex flex-col gap-2 justify-center">
+                                    <p>Cost : </p>
+                                    <p>₹ {trip.cost}</p>
+                                </div>
+
+                                <div className="flex flex-col gap-2 justify-center">
+                                    <button
+                                        onClick={() =>
+                                            handleApproveTrip(trip.id)
+                                        }
+                                        className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
+                                    >
+                                        Assign
+                                    </button>
+                                    <button
+                                        onClick={() =>
+                                            handleRejectTrip(trip.id)
+                                        }
+                                        className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                                    >
+                                        Reject
+                                    </button>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+                {/* <table className="w-full border-collapse border border-gray-400">
                     <thead>
                         <tr className="bg-gray-200">
-                            <th className="border border-gray-400 px-4 py-2">Trip ID</th>
-                            <th className="border border-gray-400 px-4 py-2">User</th>
-                            <th className="border border-gray-400 px-4 py-2">Start Date</th>
-                            <th className="border border-gray-400 px-4 py-2">End Date</th>
-                            <th className="border border-gray-400 px-4 py-2">Pickup → Destination</th>
-                            <th className="border border-gray-400 px-4 py-2">Available Drivers</th>
-                            <th className="border border-gray-400 px-4 py-2">Actions</th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                Trip ID
+                            </th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                User
+                            </th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                Start Date
+                            </th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                End Date
+                            </th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                Pickup → Destination
+                            </th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                Available Drivers
+                            </th>
+                            <th className="border border-gray-400 px-4 py-2">
+                                Actions
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {pendingTrips.map((trip, index) => {
-                            const user = users.find((u) => u.email === trip.userEmail);
+                            const user = users.find(
+                                (u) => u.email === trip.userEmail
+                            );
                             const availableDrivers = getAvailableDrivers(trip);
 
                             return (
                                 <tr key={index} className="text-center">
-                                    <td className="border border-gray-400 px-4 py-2">{trip.id}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{user?.username}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{trip.startDate}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{trip.endDate}</td>
+                                    <td className="border border-gray-400 px-4 py-2">
+                                        {trip.id}
+                                    </td>
+                                    <td className="border border-gray-400 px-4 py-2">
+                                        {user?.username}
+                                    </td>
+                                    <td className="border border-gray-400 px-4 py-2">
+                                        {trip.startDate}
+                                    </td>
+                                    <td className="border border-gray-400 px-4 py-2">
+                                        {trip.endDate}
+                                    </td>
                                     <td className="border border-gray-400 px-4 py-2">
                                         {trip.pickup} → {trip.destination}
                                     </td>
@@ -115,27 +226,40 @@ export default function ConfirmTrip() {
                                             }
                                             onChange={(e) => {
                                                 setSelectedTripID(trip.id);
-                                                setSelectedDriverEmail(e.target.value);
+                                                setSelectedDriverEmail(
+                                                    e.target.value
+                                                );
                                             }}
                                             className="border px-2 py-1"
                                         >
-                                            <option value="">-- Select Driver --</option>
-                                            {availableDrivers.map((driver, i) => (
-                                                <option key={i} value={driver.email}>
-                                                    {driver.username}
-                                                </option>
-                                            ))}
+                                            <option value="">
+                                                -- Select Driver --
+                                            </option>
+                                            {availableDrivers.map(
+                                                (driver, i) => (
+                                                    <option
+                                                        key={i}
+                                                        value={driver.email}
+                                                    >
+                                                        {driver.username}
+                                                    </option>
+                                                )
+                                            )}
                                         </select>
                                     </td>
                                     <td className="border border-gray-400 px-4 py-2 space-x-2">
                                         <button
-                                            onClick={() => handleApproveTrip(trip.id)}
+                                            onClick={() =>
+                                                handleApproveTrip(trip.id)
+                                            }
                                             className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
                                         >
-                                            Approve
+                                            Assign
                                         </button>
                                         <button
-                                            onClick={() => handleRejectTrip(trip.id)}
+                                            onClick={() =>
+                                                handleRejectTrip(trip.id)
+                                            }
                                             className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
                                         >
                                             Reject
@@ -145,7 +269,7 @@ export default function ConfirmTrip() {
                             );
                         })}
                     </tbody>
-                </table>
+                </table> */}
             </div>
         </div>
     );

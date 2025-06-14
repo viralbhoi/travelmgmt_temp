@@ -25,7 +25,7 @@ export default function AdminNav() {
                     Dashboard
                 </NavLink>
                 <NavLink
-                    to="/admin/users"
+                    to="/admin/confirmtrip"
                     className={({ isActive }) =>
                         `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                             isActive
@@ -38,7 +38,7 @@ export default function AdminNav() {
                     Confirm Trips
                 </NavLink>
                 <NavLink
-                    to="/admin/users"
+                    to="/admin/alltrips"
                     className={({ isActive }) =>
                         `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                             isActive
