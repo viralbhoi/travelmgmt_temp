@@ -95,20 +95,20 @@ export default function ConfirmTrip() {
                         return (
                             <div
                                 key={index}
-                                className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 mt-4 bg-slate-300 rounded-2xl shadow-md"
+                                className="flex gap-4 flex-col md:flex-row justify-evenly p-4 mt-4 bg-slate-300 rounded-2xl shadow-md"
                             >
-                                <div className="flex flex-col justify-center">
+                                <div className="flex flex-2/12 flex-col justify-center">
                                     <p>id:</p>
                                     <p>{trip.id}</p>
                                 </div>
 
-                                <div className="flex flex-col justify-center">
+                                <div className="flex flex-3/12 flex-col justify-center">
                                     <p>
                                         {trip.pickup} → {trip.destination}
                                     </p>
                                 </div>
 
-                                <div className="flex flex-col gap-2 justify-center">
+                                <div className="flex flex-2/12 flex-col justify-center gap-2">
                                     <p>Driver: </p>
                                     <select
                                         name="driver"
@@ -139,17 +139,17 @@ export default function ConfirmTrip() {
                                     </select>
                                 </div>
 
-                                <div className="flex flex-col gap-2 justify-center">
+                                <div className="flex flex-col flex-2/12 gap-2 justify-center">
                                     <p>Cost : </p>
                                     <p>₹ {trip.cost}</p>
                                 </div>
 
-                                <div className="flex flex-col gap-2 justify-center">
+                                <div className="flex md:flex-col flex-3/12 gap-2 justify-center">
                                     <button
                                         onClick={() =>
                                             handleApproveTrip(trip.id)
                                         }
-                                        className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
+                                        className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded flex-1"
                                     >
                                         Assign
                                     </button>
@@ -157,7 +157,7 @@ export default function ConfirmTrip() {
                                         onClick={() =>
                                             handleRejectTrip(trip.id)
                                         }
-                                        className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                                        className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded flex-1"
                                     >
                                         Reject
                                     </button>
