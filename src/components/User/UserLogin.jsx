@@ -77,153 +77,155 @@ export default function UserLogin() {
     };
 
     return (
-        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col justify-items-start">
-            <div className="flex justify-between items-center px-4 py-2 h-[20%]">
-                <h2>Travel Management System</h2>
-                <h3>Login/Signup</h3>
+        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col md:flex-row justify-items-start box-border">
+            <div className="flex-1/5 md:flex-1 bg-white bg-[url('/UserLogin.jpg')] bg-no-repeat bg-center bg-fit">
+                <button className="m-5 p-3 bg-slate-900/75 rounded-2xl text-slate-50 underline" onClick={()=>navigate("/")}>&larr; Back to Home</button>
             </div>
 
-            <div className="px-5 ">
-                <button
-                    className={`${
-                        islogin
-                            ? "bg-gray-600 text-white"
-                            : "bg-gray-400 text-black"
-                    } mx-2 p-3 !rounded-t-xl`}
-                    onClick={() => setisLogin(true)}
-                >
-                    Login
-                </button>
+            <div className="flex-4/5 md:flex-1 p-5 flex flex-col gap-2 md:gap-0">
 
-                <button
-                    className={`${
-                        islogin
-                            ? "bg-gray-400 text-black"
-                            : "bg-gray-600  text-white"
-                    } mx-2 p-3 !rounded-t-xl`}
-                    onClick={() => setisLogin(false)}
-                >
-                    Signup
-                </button>
-            </div>
+                <div className="flex flex-col md:flex-row w-full gap-2 md:gap-0">
+                    <button
+                        className={`${
+                            islogin
+                                ? "bg-slate-800 text-white"
+                                : "bg-slate-400 text-black"
+                        } flex-1 p-4 rounded-2xl md:rounded-none md:rounded-tl-2xl transition-all duration-200 ease-linear`}
+                        onClick={() => setisLogin(true)}
+                    >
+                        Login
+                    </button>
 
-            <div className="bg-gray-600 p-5 h-[80%]">
-                <form onSubmit={handleUserLogin}>
-                    {islogin ? (
-                        <div className="login">
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Email:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Enter email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
+                    <button
+                        className={`${
+                            islogin
+                                ? "bg-slate-400 text-black"
+                                : "bg-slate-800  text-white"
+                        }  flex-1 p-4 rounded-2xl md:rounded-none md:rounded-tr-2xl transition-all duration-200 ease-linear`}
+                        onClick={() => setisLogin(false)}
+                    >
+                        Signup
+                    </button>
+                </div>
+
+                <div className="bg-slate-800 p-5 flex-1  rounded-2xl md:rounded-none md:rounded-b-2xl">
+                    <form onSubmit={handleUserLogin} >
+                        {islogin ? (
+                            <div className="login width-[100%] flex flex-col justify-center">
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="email"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4 "
+                                    >
+                                        Email:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Enter email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="password"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Password:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Enter password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+
+                                <button className="bg-slate-300 mt-5 text-black p-2 px-4 text-md md:text-xl !rounded-2xl flex-1">
+                                    Login
+                                </button>
                             </div>
+                        ) : (
+                            <div className="signup width-[100%] flex flex-col justify-center">
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="username"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Username:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        placeholder="Enter username"
+                                        value={username}
+                                        onChange={(e) =>
+                                            setUsername(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
 
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Password:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Enter password"
-                                    value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                    required
-                                />
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="email"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Email:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Enter email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="password"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Password:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Enter password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+
+                                <button className="bg-slate-300 text-black p-2 px-4 text-md md:text-xl mt-5 !rounded-2xl">
+                                    Signup
+                                </button>
                             </div>
-
-                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
-                                Login
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="signup ">
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="username"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Username:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="text"
-                                    name="username"
-                                    id="username"
-                                    placeholder="Enter username"
-                                    value={username}
-                                    onChange={(e) =>
-                                        setUsername(e.target.value)
-                                    }
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Email:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Enter email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Password:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Enter password"
-                                    value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                    required
-                                />
-                            </div>
-
-                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
-                                Signup
-                            </button>
-                        </div>
-                    )}
-                </form>
+                        )}
+                    </form>
+                </div>
             </div>
         </div>
     );

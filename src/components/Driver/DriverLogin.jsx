@@ -8,10 +8,11 @@ export default function DriverLogin() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [vehicle, setVehicle] = useState("Bus");
-    const { drivers, setDrivers, loggedInUser, setLoggedInUser } = useAppContext();
+    const { drivers, setDrivers, loggedInUser, setLoggedInUser } =
+        useAppContext();
     const navigate = useNavigate();
 
-    const handleDriverSubmit = (e) =>{
+    const handleDriverSubmit = (e) => {
         e.preventDefault();
 
         if (!email || !password) {
@@ -23,7 +24,6 @@ export default function DriverLogin() {
             localStorage.removeItem(loggedInUser);
         }
         if (islogin) {
-
             const user = {
                 role: "driver",
                 email: email,
@@ -59,7 +59,7 @@ export default function DriverLogin() {
                 id: drivers.length > 0 ? drivers[drivers.length - 1].id + 1 : 1,
                 password: password,
                 username: username,
-                vehicleType: vehicle
+                vehicleType: vehicle,
             };
 
             setDrivers((prev) => [...prev, user]);
@@ -74,169 +74,186 @@ export default function DriverLogin() {
         setPassword("");
         setisLogin(true);
         setUsername("");
-    }
+    };
     return (
-        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col justify-items-start">
-            <div className="flex justify-between items-center px-4 py-2 h-[20%]">
-                <h2>Travel Management System</h2>
-                <h3> Driver Login/Signup</h3>
-            </div>
-
-            <div className="px-5 ">
+        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col md:flex-row justify-items-start box-border">
+            <div className="flex-1/5 md:flex-1 bg-white bg-[url('/driverLogin.jpg')] bg-no-repeat bg-center bg-fit">
                 <button
-                    className={`${
-                        islogin
-                            ? "bg-gray-600 text-white"
-                            : "bg-gray-400 text-black"
-                    } mx-2 p-3 !rounded-t-xl`}
-                    onClick={() => setisLogin(true)}
+                    className="m-5 p-3 bg-slate-900/75 rounded-2xl text-slate-50 underline"
+                    onClick={() => navigate("/")}
                 >
-                    Login
-                </button>
-
-                <button
-                    className={`${
-                        islogin
-                            ? "bg-gray-400 text-black"
-                            : "bg-gray-600  text-white"
-                    } mx-2 p-3 !rounded-t-xl`}
-                    onClick={() => setisLogin(false)}
-                >
-                    Signup
+                    &larr; Back to Home
                 </button>
             </div>
+            <div className="flex-4/5 md:flex-1 p-5 flex flex-col gap-2 md:gap-0">
+                <div className="flex flex-col md:flex-row w-full gap-2 md:gap-0 ">
+                    <button
+                        className={`${
+                            islogin
+                                ? "bg-slate-800 text-white"
+                                : "bg-slate-400 text-black"
+                        } flex-1 p-4 rounded-2xl md:rounded-none md:rounded-tl-2xl transition-all duration-200 ease-linear`}
+                        onClick={() => setisLogin(true)}
+                    >
+                        Login
+                    </button>
 
-            <div className="bg-gray-600 p-5 h-[80%]">
-                <form onSubmit={handleDriverSubmit}>
-                    {islogin ? (
-                        <div className="login">
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Email:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Enter email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
+                    <button
+                        className={`${
+                            islogin
+                                ? "bg-slate-400 text-black"
+                                : "bg-slate-800  text-white"
+                        } flex-1 p-4 rounded-2xl md:rounded-none md:rounded-tr-2xl transition-all duration-200 ease-linear`}
+                        onClick={() => setisLogin(false)}
+                    >
+                        Signup
+                    </button>
+                </div>
+
+                <div className="bg-slate-800 p-5 flex-1  rounded-2xl md:rounded-none md:rounded-b-2xl">
+                    <form onSubmit={handleDriverSubmit}>
+                        {islogin ? (
+                            <div className="login width-[100%] flex flex-col justify-center">
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="email"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Email:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Enter email"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="password"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Password:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Enter password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+
+                                <button className="bg-gray-300 text-black p-2 px-4 text-md md:text-xl !rounded-2xl">
+                                    Login
+                                </button>
                             </div>
+                        ) : (
+                            <div className="signup width-[100%] flex flex-col justify-center">
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="username"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Username:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        placeholder="Enter username"
+                                        value={username}
+                                        onChange={(e) =>
+                                            setUsername(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
 
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Password:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Enter password"
-                                    value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                    required
-                                />
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="email"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Email:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Enter email"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="password"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Password:{" "}
+                                    </label>
+                                    <input
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Enter password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-2 flex flex-col md:flex-row">
+                                    <label
+                                        htmlFor="password"
+                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                    >
+                                        Vehicle:{" "}
+                                    </label>
+                                    <select
+                                        name="vehicle"
+                                        id="vehicle"
+                                        value={vehicle}
+                                        onChange={(e) =>
+                                            setVehicle(e.target.value)
+                                        }
+                                        className="bg-white p-2 mx-2 rounded-xl flex-1 md:flex-3/4"
+                                    >
+                                        <option value="Bus">Bus</option>
+                                        <option value="Car">Car</option>
+                                        <option value="Van">Van</option>
+                                    </select>
+                                </div>
+
+                                <button className="bg-slate-300 text-black p-2 px-4 text-md md:text-xl !rounded-2xl">
+                                    Signup
+                                </button>
                             </div>
-
-                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
-                                Login
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="signup ">
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="username"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Username:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="text"
-                                    name="username"
-                                    id="username"
-                                    placeholder="Enter username"
-                                    value={username}
-                                    onChange={(e) =>
-                                        setUsername(e.target.value)
-                                    }
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Email:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Enter email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Password:{" "}
-                                </label>
-                                <input
-                                    className="bg-white p-2 mx-2 rounded-xl w-[20%]"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Enter password"
-                                    value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-2">
-                                <label
-                                    htmlFor="password"
-                                    className="text-white p-1 text-2xl w-[12%]"
-                                >
-                                    Vehicle:{" "}
-                                </label>
-                                <select name="vehicle" id="vehicle" value={vehicle} onChange={(e) => setVehicle(e.target.value)} className="bg-white p-2 mx-2 rounded-xl w-[20%]">
-                                    <option value="Bus">Bus</option>
-                                    <option value="Car">Car</option>
-                                    <option value="Van">Van</option>
-                                </select>
-                            </div>
-
-                            <button className="bg-gray-300 text-black p-2 px-4 text-3xl !rounded-2xl">
-                                Signup
-                            </button>
-                        </div>
-                    )}
-                </form>
+                        )}
+                    </form>
+                </div>
             </div>
         </div>
     );

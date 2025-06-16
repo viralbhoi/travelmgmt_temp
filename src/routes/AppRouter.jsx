@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext.jsx";
-import Login from "../pages/Login.jsx";
 // import UserDashboard from "../modules/user/UserDashboard";
 import UserDashboard from "../components/User/UserDashboard.jsx";
 // import AdminDashboard from "../modules/admin/AdminDashboard.jsx";

@@ -13,7 +13,7 @@ export default function Home() {
         navigate("/admin/login");
     };
     return (
-        <div className="m-0 h-screen bg-[url('wooden-bridge-koh-nangyuan-island-surat-thani-thailand.jpg')] bg-no-repeat bg-center bg-fit ">
+        <div className="m-0 h-screen bg-[url('Background.jpg')] bg-no-repeat bg-center bg-fit ">
             <div className="p-3 h-[100%] backdrop-blur-xs flex flex-col justify-center items-center gap-4">
                 <div className="h-[15%] flex flex-wrap bg-slate-50 box-border justify-center items-center rounded-2xl backdrop-blur-3xl w-full">
                     <NavLink
@@ -27,7 +27,7 @@ export default function Home() {
                         TravelMate
                     </h1>
                 </div>
-                <div className="bg-slate-950/50 backdrop-blur-xl rounded-2xl w-full m-2 p-4 shadow-xl flex-1 flex flex-col">
+                <div className="bg-slate-950/70 backdrop-blur-xl rounded-2xl w-full m-2 p-4 shadow-xl flex-1 flex flex-col">
                     <h2 className="text-white text-3xl font-semibold mb-4">
                         Continue As
                     </h2>
