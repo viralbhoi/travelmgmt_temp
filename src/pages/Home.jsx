@@ -33,20 +33,20 @@ export default function Home() {
                     </h2>
                     <div className="flex flex-col gap-4 items-center justify-center mt-5 md:mt-2">
                         <button
-                            className="bg-white/50 text-slate-950 font-semibold w-[30%] p-3 rounded-2xl hover:bg-white/30 transition duration-200 ease-in-out shadow-md"
+                            className="bg-white/50 text-slate-950 font-semibold w-[80%] md:w-[30%] p-3 rounded-2xl hover:bg-white/30 transition duration-200 ease-in-out shadow-md"
                             onClick={handleUser}
                         >
                             User
                         </button>
                         <button
                             onClick={handleDriver}
-                            className="bg-white/50 text-slate-950 font-semibold w-[30%] p-3 rounded-2xl hover:bg-white/30 transition duration-200 ease-in-out shadow-md"
+                            className="bg-white/50 text-slate-950 font-semibold w-[80%] md:w-[30%] p-3 rounded-2xl hover:bg-white/30 transition duration-200 ease-in-out shadow-md"
                         >
                             Driver
                         </button>
                         <button
                             onClick={handleAdmin}
-                            className="bg-white/50 text-slate-950 font-semibold w-[30%] p-3 rounded-2xl hover:bg-white/30 transition duration-200 ease-in-out shadow-md"
+                            className="bg-white/50 text-slate-950 font-semibold w-[80%] md:w-[30%] p-3 rounded-2xl hover:bg-white/30 transition duration-200 ease-in-out shadow-md"
                         >
                             Admin
                         </button>
