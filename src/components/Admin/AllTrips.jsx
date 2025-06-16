@@ -23,30 +23,35 @@ export default function AllTrips() {
                         return (
                             <div
                                 key={index}
-                                className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 mt-4 bg-slate-300 rounded-2xl shadow-md"
+                                className="flex gap-4 flex-col md:flex-row justify-evenly p-4 mt-4 bg-slate-300 rounded-2xl shadow-md"
                             >
-                                <div className="flex flex-col justify-center">
+                                <div className="flex flex-2/12 flex-col justify-center">
                                     <p>id:</p>
                                     <p>{trip.id}</p>
                                 </div>
 
-                                <div className="flex flex-col justify-center">
+                                <div className="flex flex-2/12 flex-col gap-2 justify-center">
+                                    <p>User: </p>
+                                    <p>{trip.userEmail ? users.find((user) => user.email === trip.userEmail).username: "Not Assigned"}</p>
+                                </div>
+
+                                <div className="flex flex-2/12 flex-col justify-center">
                                     <p>
                                         {trip.pickup} → {trip.destination}
                                     </p>
                                 </div>
 
-                                <div className="flex flex-col gap-2 justify-center">
+                                <div className="flex flex-2/12 flex-col gap-2 justify-center">
                                     <p>Driver: </p>
                                     <p>{trip.driverEmail ? drivers.find((drv) => drv.email === trip.driverEmail).username: "Not Assigned"}</p>
                                 </div>
 
-                                <div className="flex flex-col gap-2 justify-center">
+                                <div className="flex flex-col flex-2/12 gap-2 justify-center">
                                     <p>Cost : </p>
-                                    <p>₹ {trip.cost}</p>
+                                    <p>₹ {trip.cost || 0}</p>
                                 </div>
 
-                                <div className="flex flex-col gap-2 justify-center">
+                                <div className="flex flex-col flex-2/12 gap-2 justify-center">
                                     <p className={`${trip.status === "rejected" ? "bg-red-500 text-slate-50" : trip.status === "approved" ? "bg-green-500" : "bg-yellow-300"} p-4 rounded-2xl`}>{trip.status}</p>
                                 </div>
                             </div>

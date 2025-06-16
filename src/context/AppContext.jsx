@@ -57,7 +57,8 @@ export const AppProvider = ({ children }) => {
                 cityDistanceData,
                 costPerKM,
                 packagesData,
-                packages
+                packages,
+                setPackages
             }}
         >
             {children}

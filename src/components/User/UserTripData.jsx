@@ -15,7 +15,7 @@ export default function UserTripData() {
                 return (
                     <div
                         key={index}
-                        className="flex  gap-2 flex-col md:flex-row justify-evenly p-4 m-1 bg-slate-300 rounded-2xl shadow-md"
+                        className="flex gap-2 flex-col md:flex-row justify-evenly p-4 m-1 bg-slate-300 rounded-2xl shadow-md"
                     >
                         <div className="flex flex-col flex-2/12 justify-center">
                             <p>id:</p>
