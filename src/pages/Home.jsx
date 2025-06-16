@@ -27,31 +27,6 @@ export default function Home() {
                         TravelMate
                     </h1>
                 </div>
-                {/* <div className="bg-slate-900 flex-1 rounded-2xl w-full m-2 bg-opacity-[10%]">
-                    <div className="backdrop-blur-3xl rounded-2xl">
-                        <h2 className="p-3 mt-1">Continue As</h2>
-                        <div className="flex flex-col gap-4 items-center">
-                            <button
-                                className="bg-gray-600 text-white w-[30%] p-3 !rounded-2xl hover:bg-gray-700 transition duration-200 ease shadow-md block"
-                                onClick={handleUser}
-                            >
-                                User
-                            </button>
-                            <button
-                                onClick={handleDriver}
-                                className="bg-gray-600 text-white w-[30%] p-3 !rounded-2xl hover:bg-gray-700 transition duration-200 ease shadow-md block"
-                            >
-                                Driver
-                            </button>
-                            <button
-                                onClick={handleAdmin}
-                                className="bg-gray-600 text-white w-[30%] p-3 !rounded-2xl hover:bg-gray-700 transition duration-200 ease shadow-md block"
-                            >
-                                Admin
-                            </button>
-                        </div>
-                    </div>
-                </div> */}
                 <div className="bg-slate-950/50 backdrop-blur-xl rounded-2xl w-full m-2 p-4 shadow-xl flex-1 flex flex-col">
                     <h2 className="text-white text-3xl font-semibold mb-4">
                         Continue As
