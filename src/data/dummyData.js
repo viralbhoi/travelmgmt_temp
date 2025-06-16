@@ -60,7 +60,7 @@ export const perKMcost = {
     "bus" : 5
 }
 
-export const packages = [
+export const packagesDatalist = [
     {
         id: 1,
         pickup: "Ahmedabad",

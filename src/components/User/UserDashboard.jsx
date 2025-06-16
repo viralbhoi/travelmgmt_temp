@@ -4,7 +4,7 @@ import UserTripData from './UserTripData'
 
 export default function UserDashboard() {
   return (
-    <div>
+    <div className='flex'>
       <UserNav/>
       <UserTripData/>
     </div>

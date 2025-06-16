@@ -9,26 +9,26 @@ export default function UserTripData() {
     );
 
     return (
-        <div className="p-3 flex flex-col gap-3 justify-center m-auto">
+        <div className="p-3 flex flex-col gap-3 md:ml-[20%] w-full justify-center m-auto">
             <h2 className="text-xl font-medium text-shadow-sm shadow-md p-4 bg-slate-700 rounded-2xl text-center text-slate-50">User Trip Information</h2>
             {userTrips.map((trip, index) => {
                 return (
                     <div
                         key={index}
-                        className="flex flex-wrap gap-2 flex-col md:flex-row justify-evenly p-4 m-1 bg-slate-300 rounded-2xl shadow-md"
+                        className="flex  gap-2 flex-col md:flex-row justify-evenly p-4 m-1 bg-slate-300 rounded-2xl shadow-md"
                     >
-                        <div className="flex flex-col justify-center">
+                        <div className="flex flex-col flex-2/12 justify-center">
                             <p>id:</p>
                             <p>{trip.id}</p>
                         </div>
 
-                        <div className="flex flex-col justify-center">
+                        <div className="flex flex-col flex-3/12 justify-center">
                             <p>
                                 {trip.pickup} → {trip.destination}
                             </p>
                         </div>
 
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-col flex-3/12 gap-2 justify-center">
                             <p>Driver: </p>
                             <p>
                                 {trip.status === "approved"
@@ -40,12 +40,12 @@ export default function UserTripData() {
                             </p>
                         </div>
 
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-col flex-2/12 gap-2 justify-center">
                             <p>Cost : </p>
                             <p>₹ {trip.cost || 0}</p>
                         </div>
 
-                        <div className="flex flex-col justify-center">
+                        <div className="flex flex-col flex-2/12 justify-center">
                             {trip.status === "rejected" ? (
                                 <p className="bg-red-500 text-slate-50 p-4 rounded-2xl">
                                     {" "}

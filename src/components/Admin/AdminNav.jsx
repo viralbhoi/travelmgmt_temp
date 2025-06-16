@@ -7,7 +7,7 @@ export default function AdminNav() {
     const navigate = useNavigate();
 
     return (
-        <div className="hidden w-[100%] md:block  md:w-[20%] bg-slate-950 text-white h-screen">
+        <div className="hidden w-[100%] md:block md:fixed md:left-0 md:top-0  md:w-[20%] bg-slate-950 text-white h-screen">
             <h2 className="text-xl font-bold mb-6 p-3">Admin Panel</h2>
 
             <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
@@ -51,7 +51,7 @@ export default function AdminNav() {
                     All Trips
                 </NavLink>
                 <NavLink
-                    to="/admin/trips"
+                    to="/admin/packages"
                     className={({ isActive }) =>
                         `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                             isActive
@@ -66,7 +66,7 @@ export default function AdminNav() {
                 <button
                     onClick={() => {
                         setLoggedInUser(null);
-                        navigate("/login");
+                        navigate("/admin/login");
                     }}
                     className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
                 >

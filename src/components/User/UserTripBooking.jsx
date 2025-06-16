@@ -62,95 +62,100 @@ export default function UserTripBooking() {
     };
 
     return (
-        <div className="mx-0 w-screen h-screen box-border">
+        <div className="mx-0 flex h-screen p-4">
             <UserNav />
 
-            <div className="px-5 ">
+            <div className="md:ml-[20%] w-full ">
                 <form onSubmit={handleOnSubmit}>
-                    <div className="flex flex-col justify-center items-center">
-                        <h2 className="text-3xl bg-slate-500 text-center p-4 rounded-2xl text-slate-50 w-[100%]">Book A trip</h2>
-                        <div className=" w-[40%] my-2">
-                        <label> <h2>Vehicle:</h2> </label>
-                        <div className="flex gap-4 my-4">
+                    <div className="flex flex-col justify-center items-center ">
+                        <h2 className="text-3xl bg-slate-500 text-center p-4 rounded-2xl text-slate-50 w-[80%]">
+                            Book A trip
+                        </h2>
+                        <div className=" w-[80%] my-2 mt-4 bg-slate-200 p-4 rounded-2xl py-2">
                             <label>
-                                <input
-                                    type="radio"
-                                    name="vehicle"
-                                    value="bus"
-                                    checked={vehicle === "bus"}
-                                    onChange={() => setVehicle("bus")}
-                                    className="hidden"
-                                />
-                                <div
-                                    className={`px-4 py-2 rounded-2xl border-none
+                                {" "}
+                                <h2>Vehicle:</h2>{" "}
+                            </label>
+                            <div className="flex flex-wrap gap-4 my-4">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="vehicle"
+                                        value="bus"
+                                        checked={vehicle === "bus"}
+                                        onChange={() => setVehicle("bus")}
+                                        className="hidden"
+                                    />
+                                    <div
+                                        className={`px-4 py-2 rounded-2xl border-none
                                     ${
                                         vehicle === "bus"
                                             ? "bg-slate-700 text-white"
                                             : "bg-slate-200 text-slate-800"
                                     }`}
-                                >
-                                    <i
-                                        className="fa fa-bus"
-                                        aria-hidden="true"
-                                    ></i>
-                                    {"  "}Bus
-                                </div>
-                            </label>
+                                    >
+                                        <i
+                                            className="fa fa-bus"
+                                            aria-hidden="true"
+                                        ></i>
+                                        {"  "}Bus
+                                    </div>
+                                </label>
 
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="vehicle"
-                                    value="car"
-                                    checked={vehicle === "car"}
-                                    onChange={() => setVehicle("car")}
-                                    className="hidden"
-                                />
-                                <div
-                                    className={`cursor-pointer px-4 py-2 rounded-2xl border-none
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="vehicle"
+                                        value="car"
+                                        checked={vehicle === "car"}
+                                        onChange={() => setVehicle("car")}
+                                        className="hidden"
+                                    />
+                                    <div
+                                        className={`cursor-pointer px-4 py-2 rounded-2xl border-none
                                     ${
                                         vehicle === "car"
                                             ? "bg-slate-700 text-white"
                                             : "bg-slate-200 text-slate-800"
                                     }`}
-                                >
-                                    <i
-                                        className="fa fa-car"
-                                        aria-hidden="true"
-                                    ></i>
-                                    {"  "}Car
-                                </div>
-                            </label>
+                                    >
+                                        <i
+                                            className="fa fa-car"
+                                            aria-hidden="true"
+                                        ></i>
+                                        {"  "}Car
+                                    </div>
+                                </label>
 
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="vehicle"
-                                    value="van"
-                                    checked={vehicle === "van"}
-                                    onChange={() => setVehicle("van")}
-                                    className="hidden"
-                                />
-                                <div
-                                    className={`cursor-pointer px-4 py-2 rounded-2xl border-none 
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="vehicle"
+                                        value="van"
+                                        checked={vehicle === "van"}
+                                        onChange={() => setVehicle("van")}
+                                        className="hidden"
+                                    />
+                                    <div
+                                        className={`cursor-pointer px-4 py-2 rounded-2xl border-none 
                                     ${
                                         vehicle === "van"
                                             ? "bg-slate-700 text-white"
                                             : "bg-slate-200 text-slate-800"
                                     }`}
-                                >
-                                    <i
-                                        className="fa fa-taxi"
-                                        aria-hidden="true"
-                                    ></i>
-                                    {"  "}Van
-                                </div>
-                            </label>
-                        </div>
+                                    >
+                                        <i
+                                            className="fa fa-taxi"
+                                            aria-hidden="true"
+                                        ></i>
+                                        {"  "}Van
+                                    </div>
+                                </label>
+                            </div>
                         </div>
 
-                        <div className="flex w-[40%] my-2">
-                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-l-2xl border-r">
+                        <div className="flex flex-col gap-4 md:gap-0 md:flex-row w-[80%] my-2">
+                            <div className="flex flex-col md:w-1/2 p-5 bg-slate-200 md:rounded-l-2xl md:rounded-r-none md:border-r rounded-2xl">
                                 <label
                                     htmlFor="startDate"
                                     className="px-2 py-3 block"
@@ -169,7 +174,7 @@ export default function UserTripBooking() {
                                 />
                             </div>
 
-                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-r-2xl border-l">
+                            <div className="flex flex-col md:w-1/2 p-5 bg-slate-200 md:rounded-r-2xl md:rounded-l-none md:border-l rounded-2xl">
                                 <label
                                     htmlFor="endDate"
                                     className="px-2 py-3 block"
@@ -187,8 +192,8 @@ export default function UserTripBooking() {
                             </div>
                         </div>
 
-                        <div className="flex w-[40%] my-2">
-                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-l-2xl border-r">
+                        <div className="flex flex-col gap-4 md:gap-0 md:flex-row w-[80%] my-2">
+                            <div className="flex flex-col md:w-1/2 p-5 bg-slate-200 md:rounded-l-2xl md:rounded-r-none md:border-r rounded-2xl">
                                 <label
                                     htmlFor="pickup"
                                     className="px-2 py-3 block"
@@ -212,7 +217,7 @@ export default function UserTripBooking() {
                                 </select>
                             </div>
 
-                            <div className="flex flex-col w-1/2 p-5 bg-slate-200 rounded-r-2xl border-l">
+                            <div className="flex flex-col md:w-1/2 p-5 bg-slate-200 md:rounded-r-2xl md:rounded-l-none md:border-l rounded-2xl">
                                 <label
                                     htmlFor="destination"
                                     className="px-2 py-3 block"
@@ -239,7 +244,7 @@ export default function UserTripBooking() {
                             </div>
                         </div>
 
-                        <div className="w-[40%] bg-slate-700 p-4 m-2 rounded-2xl text-slate-50">
+                        <div className="w-[80%] bg-slate-700 p-4 m-2 rounded-2xl text-slate-50">
                             <p>Cost:</p>
                             {pickup && destination
                                 ? pickup === destination

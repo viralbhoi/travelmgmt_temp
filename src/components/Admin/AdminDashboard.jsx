@@ -48,7 +48,7 @@ export default function AdminDashboard() {
     <div className='flex flex-wrap'>
       <AdminNav/>
 
-      <div className="w-[100%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
+      <div className="md:ml-[20%] w-full h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
           <Card title="Total Trips" value={stats.totalTrip} iconStyle="fa fa-ticket"/>
           <Card title="Total Revenue" value={stats.totalRevenue} iconStyle="fa fa-money"/>
           <Card title="Pending Trips" value={stats.pendingTrip} iconStyle="fa fa-clock-o"/>

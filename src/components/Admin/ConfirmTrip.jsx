@@ -77,8 +77,8 @@ export default function ConfirmTrip() {
     return (
         <div className="flex ">
             <AdminNav />
-            <div className="p-4 w-[100%] md:w-[80%]">
-                <h2 className="text-xl font-semibold mb-4">
+            <div className="p-4 md:ml-[20%] w-full">
+                <h2 className="bg-slate-800 text-2xl text-slate-50 text-center font-semibold p-4 rounded-2xl">
                     Confirm Pending Requests
                 </h2>
 
@@ -95,7 +95,7 @@ export default function ConfirmTrip() {
                         return (
                             <div
                                 key={index}
-                                className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 m-2 bg-slate-300 rounded-2xl shadow-md"
+                                className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 mt-4 bg-slate-300 rounded-2xl shadow-md"
                             >
                                 <div className="flex flex-col justify-center">
                                     <p>id:</p>

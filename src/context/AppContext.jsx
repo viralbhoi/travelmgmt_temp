@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { getFromLS, saveToLS } from "../utils/localStorageUtils";
-import { dummyUsers, dummyDrivers, dummyAdmins,cities,cityDistances,perKMcost} from "../data/dummyData";
+import { dummyUsers, dummyDrivers, dummyAdmins,cities,cityDistances,perKMcost, packagesDatalist} from "../data/dummyData";
 
 const AppContext = createContext();
 
@@ -20,6 +20,14 @@ export const AppProvider = ({ children }) => {
         getFromLS("loggedInUser") || null
     );
 
+    const [packages, setPackages] = useState(
+        getFromLS("packages") || packagesDatalist
+    )
+
+    const [packagesData, setPackagesData] = useState(
+        getFromLS("packagesData") || null
+    )
+
     
 
     useEffect(() => {
@@ -28,7 +36,9 @@ export const AppProvider = ({ children }) => {
         saveToLS("trips", trips);
         saveToLS("admins", admins);
         saveToLS("loggedInUser", loggedInUser);
-    }, [users, drivers, trips, loggedInUser, admins]);
+        saveToLS("packages", packages);
+        saveToLS("packagesData", packagesData);
+    }, [users, drivers, trips, loggedInUser, admins, packages, packagesData]);
 
     return (
         <AppContext.Provider
@@ -45,7 +55,9 @@ export const AppProvider = ({ children }) => {
                 setUsers,
                 city,
                 cityDistanceData,
-                costPerKM
+                costPerKM,
+                packagesData,
+                packages
             }}
         >
             {children}
