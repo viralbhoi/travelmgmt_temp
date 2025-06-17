@@ -68,7 +68,7 @@ export default function AdminPackages() {
         <div className="flex">
             <AdminNav />
 
-            <div className="flex-1 md:ml-[20%] flex flex-col p-3">
+            <div className="flex-1 mt-[17%] md:mt-0 md:ml-[20%] flex flex-col p-3">
                 <div>
                     <h2 className="bg-slate-800 text-2xl text-slate-50 text-center font-semibold p-4 rounded-2xl">
                         Add Package

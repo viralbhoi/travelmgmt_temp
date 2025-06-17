@@ -1,12 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext.jsx";
-// import UserDashboard from "../modules/user/UserDashboard";
 import UserDashboard from "../components/User/UserDashboard.jsx";
-// import AdminDashboard from "../modules/admin/AdminDashboard.jsx";
 import AdminDashboard from "../components/Admin/AdminDashboard.jsx";
-// import DriverDashboard from "../modules/driver/DriverDashboard.jsx";
 import DriverDashboard from "../components/Driver/DriverDashboard.jsx";
-// import TripBookingForm from "../modules/user/TripBookingForm.jsx";
 import Home from "../pages/Home.jsx";
 import UserLogin from "../components/User/UserLogin.jsx";
 import AdminLogin from "../components/Admin/AdminLogin.jsx";

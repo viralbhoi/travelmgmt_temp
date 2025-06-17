@@ -77,7 +77,7 @@ export default function ConfirmTrip() {
     return (
         <div className="flex ">
             <AdminNav />
-            <div className="p-4 md:ml-[20%] w-full">
+            <div className="p-4 mt-[17%] md:mt-0 md:ml-[20%] w-full">
                 <h2 className="bg-slate-800 text-2xl text-slate-50 text-center font-semibold p-4 rounded-2xl">
                     Confirm Pending Requests
                 </h2>

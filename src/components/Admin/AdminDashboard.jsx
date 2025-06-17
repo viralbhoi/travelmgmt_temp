@@ -52,7 +52,7 @@ export default function AdminDashboard() {
         <div className="flex flex-wrap">
             <AdminNav />
 
-            <div className="md:ml-[20%] w-full h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
+            <div className="mt-[17%] md:mt-0 md:ml-[20%] w-full h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
                 <Card
                     title="Total Trips"
                     value={stats.totalTrip}
