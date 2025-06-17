@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminNav from "./AdminNav";
 import { useAppContext } from "../../context/AppContext";
 
 export default function AllTrips() {
     const { trips, drivers, users } = useAppContext();
+    const [filter, setFilter] = useState("");
     return (
         <div className="flex ">
             <AdminNav />

@@ -76,13 +76,13 @@ export default function AdminPackages() {
 
                     <form>
                         <div className="w-[100%] flex flex-col gap-3 mt-3 mb-4 p-4 bg-slate-200 rounded-2xl">
-                            <div className="flex flex-col md:flex-row items-center">
-                                <label htmlFor="pickup" className="md:w-3/12">
+                            <div className="flex flex-col md:flex-row md:items-center">
+                                <label htmlFor="pickup" className="flex-1 md:flex-4/12">
                                     {" "}
                                     Pickup:{" "}
                                 </label>
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-8/12  bg-slate-100 rounded-2xl p-2"
                                     type="text"
                                     placeholder="pickup"
                                     name="pickup"
@@ -92,16 +92,16 @@ export default function AdminPackages() {
                                 />
                             </div>
 
-                            <div className="flex flex-col md:flex-row items-center">
+                            <div className="flex flex-col md:flex-row md:items-center">
                                 <label
                                     htmlFor="destination"
-                                    className="md:w-3/12"
+                                    className="flex-1 md:flex-4/12"
                                 >
                                     {" "}
                                     Destination:{" "}
                                 </label>
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-8/12 bg-slate-100 rounded-2xl p-2"
                                     type="text"
                                     placeholder="destination"
                                     name="destination"
@@ -113,16 +113,16 @@ export default function AdminPackages() {
                                 />
                             </div>
 
-                            <div className="flex flex-col md:flex-row items-center">
+                            <div className="flex flex-col md:flex-row md:items-center">
                                 <label
                                     htmlFor="costPerPerson"
-                                    className="md:w-3/12"
+                                    className="flex-1 md:flex-4/12"
                                 >
                                     {" "}
                                     Cost Per person:{" "}
                                 </label>
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-8/12 bg-slate-100 rounded-2xl p-2"
                                     type="number"
                                     placeholder="costPerPerson"
                                     name="costPerPerson"
@@ -135,16 +135,16 @@ export default function AdminPackages() {
                                 />
                             </div>
 
-                            <div className="flex flex-col md:flex-row items-center">
+                            <div className="flex flex-col md:flex-row md:items-center">
                                 <label
-                                    className="md:w-3/12"
+                                    className="flex-1 md:flex-4/12"
                                     htmlFor="startDate"
                                 >
                                     {" "}
                                     Start Date:{" "}
                                 </label>
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-8/12 bg-slate-100 rounded-2xl p-2"
                                     type="date"
                                     placeholder="startDate"
                                     name="startDate"
@@ -156,13 +156,13 @@ export default function AdminPackages() {
                                 />
                             </div>
 
-                            <div className="flex flex-col md:flex-row items-center">
-                                <label htmlFor="endDate" className="md:w-3/12">
+                            <div className="flex flex-col md:flex-row md:items-center">
+                                <label htmlFor="endDate" className="flex-1 md:flex-4/12">
                                     {" "}
                                     End Date:{" "}
                                 </label>
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-8/12 bg-slate-100 rounded-2xl p-2"
                                     type="date"
                                     placeholder="endDate"
                                     name="endDate"
@@ -172,13 +172,13 @@ export default function AdminPackages() {
                                 />
                             </div>
 
-                            <div className="flex flex-col md:flex-row items-center">
-                                <label htmlFor="seats" className="md:w-3/12">
+                            <div className="flex flex-col md:flex-row md:items-center">
+                                <label htmlFor="seats" className="flex-1 md:flex-4/12">
                                     {" "}
                                     Seats:{" "}
                                 </label>
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-8/12 bg-slate-100 rounded-2xl p-2"
                                     type="number"
                                     placeholder="seats"
                                     name="seats"
@@ -191,8 +191,8 @@ export default function AdminPackages() {
                                 />
                             </div>
 
-                            <div className="flex flex-col md:flex-row items-center">
-                                <label htmlFor="driver" className="md:w-3/12">
+                            <div className="flex flex-col md:flex-row md:items-center">
+                                <label htmlFor="driver" className="flex-1 md:flex-4/12">
                                     {" "}
                                     Driver:{" "}
                                 </label>
@@ -200,7 +200,7 @@ export default function AdminPackages() {
                                 <select
                                     name="driver"
                                     id="driver"
-                                    className="md:w-3/12  rounded-2xl p-2 bg-slate-100"
+                                    className="flex-1 md:flex-8/12  rounded-2xl p-2 bg-slate-100"
                                     value={selectedDriverEmail}
                                     onChange={(e) =>
                                         setSelectedDriverEmail(e.target.value)
@@ -220,17 +220,17 @@ export default function AdminPackages() {
                                 </select>
                             </div>
 
-                            <div className="flex flex-col md:flex-row  items-center">
+                            <div className="flex flex-col md:flex-row  md:items-center">
                                 <label
                                     htmlFor="addPlacesCovered"
-                                    className="md:w-3/12"
+                                    className="flex-1 md:flex-4/12"
                                 >
                                     {" "}
                                     Places Covered:{" "}
                                 </label>
 
                                 <input
-                                    className="md:w-3/12 bg-slate-100 rounded-2xl p-2"
+                                    className="flex-1 md:flex-6/12 bg-slate-100 rounded-2xl p-2"
                                     type="text"
                                     value={place}
                                     onChange={(e) => setPlace(e.target.value)}
@@ -241,7 +241,7 @@ export default function AdminPackages() {
 
                                 <button
                                     onClick={handlePlaceAddition}
-                                    className="md:w-2/12 p-2 mx-2 bg-green-500 rounded-2xl"
+                                    className="flex-1 md:flex-2/12 p-2 mx-2 bg-green-500 rounded-2xl"
                                 >
                                     {" "}
                                     Add{" "}
@@ -262,7 +262,7 @@ export default function AdminPackages() {
 
                             <button
                                 type="submit"
-                                className="md:w-2/12 p-2 mx-2 bg-green-400 rounded-2xl"
+                                className="flex-1 p-2 mx-2 bg-green-400 rounded-2xl"
                                 onClick={handleSubmit}
                             >
                                 Submit
