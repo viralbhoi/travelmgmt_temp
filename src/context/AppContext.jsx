@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
     )
 
     const [packagesData, setPackagesData] = useState(
-        getFromLS("packagesData") || null
+        getFromLS("packagesData") || []
     )
 
     
@@ -57,6 +57,7 @@ export const AppProvider = ({ children }) => {
                 cityDistanceData,
                 costPerKM,
                 packagesData,
+                setPackagesData,
                 packages,
                 setPackages
             }}

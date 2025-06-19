@@ -13,9 +13,10 @@ import AllTrips from "../components/Admin/AllTrips.jsx";
 import AdminPackages from "../components/Admin/AdminPackages.jsx";
 import DriverTrip from "../components/Driver/DriverTrip.jsx";
 import DriverPackageDisplay from "../components/Driver/DriverPackageDisplay.jsx"
+import UserPackage from "../components/User/UserPackage.jsx";
 
 export default function AppRouter() {
-    const { loggedInUser } = useAppContext();
+    const {loggedInUser} = useAppContext();
 
     return (
         <Routes>
@@ -46,6 +47,17 @@ export default function AppRouter() {
                 element={
                     loggedInUser?.role === "user" ? (
                         <UserTripBooking />
+                    ) : (
+                        <Navigate to="/user/login" />
+                    )
+                }
+            />
+
+            <Route
+                path="/user/packages"
+                element={
+                    loggedInUser?.role === "user" ? (
+                        <UserPackage />
                     ) : (
                         <Navigate to="/user/login" />
                     )

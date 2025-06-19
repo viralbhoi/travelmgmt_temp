@@ -66,7 +66,7 @@ export default function UserNav() {
                     </NavLink>
 
                     <NavLink
-                        to="#"
+                        to="/user/packages"
                         className={({ isActive }) =>
                             `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                                 isActive
@@ -125,7 +125,7 @@ export default function UserNav() {
                     </NavLink>
 
                     <NavLink
-                        to="#"
+                        to="/user/packages"
                         className={({ isActive }) =>
                             `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                                 isActive

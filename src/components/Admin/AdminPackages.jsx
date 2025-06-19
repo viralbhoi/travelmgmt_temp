@@ -77,7 +77,10 @@ export default function AdminPackages() {
                     <form>
                         <div className="w-[100%] flex flex-col gap-3 mt-3 mb-4 p-4 bg-slate-200 rounded-2xl">
                             <div className="flex flex-col md:flex-row md:items-center">
-                                <label htmlFor="pickup" className="flex-1 md:flex-4/12">
+                                <label
+                                    htmlFor="pickup"
+                                    className="flex-1 md:flex-4/12"
+                                >
                                     {" "}
                                     Pickup:{" "}
                                 </label>
@@ -157,7 +160,10 @@ export default function AdminPackages() {
                             </div>
 
                             <div className="flex flex-col md:flex-row md:items-center">
-                                <label htmlFor="endDate" className="flex-1 md:flex-4/12">
+                                <label
+                                    htmlFor="endDate"
+                                    className="flex-1 md:flex-4/12"
+                                >
                                     {" "}
                                     End Date:{" "}
                                 </label>
@@ -173,7 +179,10 @@ export default function AdminPackages() {
                             </div>
 
                             <div className="flex flex-col md:flex-row md:items-center">
-                                <label htmlFor="seats" className="flex-1 md:flex-4/12">
+                                <label
+                                    htmlFor="seats"
+                                    className="flex-1 md:flex-4/12"
+                                >
                                     {" "}
                                     Seats:{" "}
                                 </label>
@@ -192,7 +201,10 @@ export default function AdminPackages() {
                             </div>
 
                             <div className="flex flex-col md:flex-row md:items-center">
-                                <label htmlFor="driver" className="flex-1 md:flex-4/12">
+                                <label
+                                    htmlFor="driver"
+                                    className="flex-1 md:flex-4/12"
+                                >
                                     {" "}
                                     Driver:{" "}
                                 </label>
@@ -278,7 +290,10 @@ export default function AdminPackages() {
                     <div className="w-[100%] flex flex-col gap-4 mt-4">
                         {packages.map((packge, index) => {
                             return (
-                                <div className="flex flex-col gap-4  p-4  bg-slate-300 rounded-2xl shadow-md" key={index}>
+                                <div
+                                    className="flex flex-col gap-4  p-4  bg-slate-300 rounded-2xl shadow-md"
+                                    key={index}
+                                >
                                     <div className="flex flex-wrap px-5 justify-between flex-col md:flex-row">
                                         <div className="flex flex-col justify-center">
                                             <p>

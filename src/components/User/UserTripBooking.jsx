@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNav from "./userNav";
+import UserNav from "./UserNav";
 import { useAppContext } from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
