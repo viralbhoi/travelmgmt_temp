@@ -9,7 +9,7 @@ export default function UserTripData() {
     );
 
     return (
-        <div className="p-3 flex flex-col gap-3 mt-[17%] md:mt-0 md:ml-[20%] w-full justify-center m-auto">
+        <div className="p-3 flex flex-col gap-3 mt-[20%] md:mt-0 md:ml-[20%] w-full justify-center m-auto">
             <h2 className="text-xl font-medium text-shadow-sm shadow-md p-4 bg-slate-800 rounded-2xl text-center text-slate-50">
                 User Trip Information
             </h2>

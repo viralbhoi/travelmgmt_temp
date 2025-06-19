@@ -11,6 +11,8 @@ import UserTripBooking from "../components/User/UserTripBooking.jsx";
 import ConfirmTrip from "../components/Admin/ConfirmTrip.jsx";
 import AllTrips from "../components/Admin/AllTrips.jsx";
 import AdminPackages from "../components/Admin/AdminPackages.jsx";
+import DriverTrip from "../components/Driver/DriverTrip.jsx";
+import DriverPackageDisplay from "../components/Driver/DriverPackageDisplay.jsx"
 
 export default function AppRouter() {
     const { loggedInUser } = useAppContext();
@@ -26,27 +28,7 @@ export default function AppRouter() {
 
             <Route path="/driver/login" element={<DriverLogin />} />
 
-            <Route
-                path="/admin/dashboard"
-                element={
-                    loggedInUser?.role === "admin" ? (
-                        <AdminDashboard />
-                    ) : (
-                        <Navigate to="/admin/login" />
-                    )
-                }
-            />
 
-            <Route
-                path="/driver/dashboard"
-                element={
-                    loggedInUser?.role === "driver" ? (
-                        <DriverDashboard />
-                    ) : (
-                        <Navigate to="/driver/login" />
-                    )
-                }
-            />
 
             <Route
                 path="/user/dashboard"
@@ -66,6 +48,19 @@ export default function AppRouter() {
                         <UserTripBooking />
                     ) : (
                         <Navigate to="/user/login" />
+                    )
+                }
+            />
+
+            {/* Admin Routes i have placed here, so if we we want to change directly available */}
+
+            <Route
+                path="/admin/dashboard"
+                element={
+                    loggedInUser?.role === "admin" ? (
+                        <AdminDashboard />
+                    ) : (
+                        <Navigate to="/admin/login" />
                     )
                 }
             />
@@ -99,6 +94,38 @@ export default function AppRouter() {
                         <AdminPackages />
                     ) : (
                         <Navigate to="/admin/login" />
+                    )
+                }
+            />
+
+            <Route
+                path="/driver/dashboard"
+                element={
+                    loggedInUser?.role === "driver" ? (
+                        <DriverDashboard />
+                    ) : (
+                        <Navigate to="/driver/login" />
+                    )
+                }
+            />
+            <Route
+                path="/driver/trips"
+                element={
+                    loggedInUser?.role === "driver" ? (
+                        <DriverTrip />
+                    ) : (
+                        <Navigate to="/driver/login" />
+                    )
+                }
+            />
+
+            <Route
+                path="/driver/packages"
+                element={
+                    loggedInUser?.role === "driver" ? (
+                        <DriverPackageDisplay />
+                    ) : (
+                        <Navigate to="/driver/login" />
                     )
                 }
             />

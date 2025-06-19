@@ -57,8 +57,10 @@ export default function ConfirmTrip() {
 
     const getAvailableDrivers = (trip) => {
         return drivers.filter((driver) => {
+            if (driver.vehicleType !== trip.vehicle) return false;
+
             const assignedTrips = trips.filter(
-                (t) => t.driverEmail === driver.email
+                (t) => (t.driverEmail === driver.email)
             );
 
             const hasConflict = assignedTrips.some((existing) =>
@@ -77,7 +79,7 @@ export default function ConfirmTrip() {
     return (
         <div className="flex ">
             <AdminNav />
-            <div className="p-4 mt-[17%] md:mt-0 md:ml-[20%] w-full">
+            <div className="p-4 mt-[20%] md:mt-0 md:ml-[20%] w-full">
                 <h2 className="bg-slate-800 text-2xl text-slate-50 text-center font-semibold p-4 rounded-2xl">
                     Confirm Pending Requests
                 </h2>
@@ -102,13 +104,20 @@ export default function ConfirmTrip() {
                                     <p>{trip.id}</p>
                                 </div>
 
-                                <div className="flex flex-3/12 flex-col justify-center">
+                                <div className="flex flex-2/12 flex-col justify-center">
                                     <p>
                                         {trip.pickup} → {trip.destination}
                                     </p>
                                 </div>
 
-                                <div className="flex flex-2/12 flex-col justify-center gap-2">
+                                <div className="flex flex-1/12 flex-col justify-center">
+                                   
+                                        <p>Vehicle:</p>
+                                    <p>{trip.vehicle}</p>
+                                   
+                                </div>
+
+                                <div className="flex flex-3/12 flex-col justify-center gap-2">
                                     <p>Driver: </p>
                                     <select
                                         name="driver"
@@ -144,7 +153,7 @@ export default function ConfirmTrip() {
                                     <p>₹ {trip.cost}</p>
                                 </div>
 
-                                <div className="flex md:flex-col flex-3/12 gap-2 justify-center">
+                                <div className="flex md:flex-col flex-2/12 gap-2 justify-center">
                                     <button
                                         onClick={() =>
                                             handleApproveTrip(trip.id)

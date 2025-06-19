@@ -65,7 +65,7 @@ export default function UserTripBooking() {
         <div className="mx-0 flex gap-0 h-screen">
             <UserNav />
 
-            <div className="md:ml-[20%] mt-[17%] md:mt-0 w-full ">
+            <div className="md:ml-[20%] mt-[20%] md:mt-0 w-full ">
                 <form onSubmit={handleOnSubmit}>
                     <div className="flex flex-col justify-center items-center p-2">
                         <h2 className="text-xl bg-slate-800 text-center p-4 rounded-2xl text-slate-50 w-[80%]">
