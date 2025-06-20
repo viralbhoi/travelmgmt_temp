@@ -125,7 +125,7 @@ export default function DriverNav() {
                         </NavLink>
 
                         <NavLink
-                            to="/driver/trips"
+                            to="/driver/pendingtrips"
                             className={({ isActive }) =>
                                 `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                                     isActive
@@ -135,7 +135,21 @@ export default function DriverNav() {
                             }
                             style={{ textDecoration: "none", color: "#F8FAFC" }}
                         >
-                            Booking
+                            Pending Approvals
+                        </NavLink>
+
+                        <NavLink
+                            to="/driver/alltrips"
+                            className={({ isActive }) =>
+                                `py-4 w-full px-3 transition-all duration-200 ease-linear ${
+                                    isActive
+                                        ? "bg-slate-900 text-slate-50 font-semibold"
+                                        : "hover:bg-slate-900"
+                                }`
+                            }
+                            style={{ textDecoration: "none", color: "#F8FAFC" }}
+                        >
+                            All trips
                         </NavLink>
 
                         <NavLink

@@ -15,25 +15,25 @@ export default function ApprovedTrip() {
     
 
     return (
-        <div className="flex flex-col p-2 mt-4 gap-4">
+        <div className="w-[100%]">
             {driverTrips.map((trip, index) => {
                 return (
                     <div
                         key={index}
-                        className="flex flex-wrap gap-4 flex-col md:flex-row justify-evenly p-4 bg-slate-300 rounded-2xl shadow-md"
+                        className="flex gap-4 flex-col md:flex-row justify-evenly p-4 mt-4 bg-slate-300 rounded-2xl shadow-md"
                     >
-                        <div className="flex flex-col justify-center">
+                        <div className="flex flex-2/12 flex-col justify-center">
                             <p>id:</p>
                             <p>{trip.id}</p>
                         </div>
 
-                        <div className="flex flex-col justify-center">
+                        <div className="flex flex-2/12 flex-col justify-center">
                             <p>
                                 {trip.pickup} → {trip.destination}
                             </p>
                         </div>
 
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-2/12 flex-col justify-center gap-2">
                             <p>User: </p>
                             <p>
                                 {users.find(
@@ -42,14 +42,14 @@ export default function ApprovedTrip() {
                             </p>
                         </div>
 
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-2/12 flex-col justify-center gap-2">
                             <p>Cost : </p>
                             <p>₹ {trip.cost || 0}</p>
                         </div>
 
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-2/12 flex-col justify-center">
                             <div
-                                className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
+                                className="bg-green-500 text-white p-4 rounded-2xl"
                             >
                                 Approved
                             </div>

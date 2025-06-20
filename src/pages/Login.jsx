@@ -225,7 +225,7 @@ export default function AdminLogin() {
                                 </div>
 
                                 <button
-                                    className="bg-gray-300 text-black p-2 px-4 text-md md:text-xl !rounded-2xl"
+                                    className="bg-gray-300 text-black p-1 px-4 text-md md:text-xl !rounded-2xl"
                                     type="submit"
                                 >
                                     Login
@@ -236,8 +236,8 @@ export default function AdminLogin() {
                                         <h3 className="font-semibold text-xl underline pb-6">
                                             Dummy Credentials:
                                         </h3>
-                                        <p>Email: Viral@gmail.com </p>
-                                        <p>Password : Viral</p>
+                                        <p>Email: admin@example.com </p>
+                                        <p>Password : Admin@123</p>
                                     </div>
                                 )}
 
@@ -246,8 +246,11 @@ export default function AdminLogin() {
                                         <h3 className="font-semibold text-xl underline pb-6">
                                             Dummy Credentials:
                                         </h3>
-                                        <p>Email: Alice@example.com </p>
-                                        <p>Password : Alice@123</p>
+                                        <p className="mt-1">Email: Alice@example.com </p>
+                                        <p className="mb-1">Password : Alice@123</p>
+                                        <hr />
+                                        <p className="mt-1">Email: Bob@example.com</p>
+                                        <p className="mb-1">Password: Bob@123</p>
                                     </div>
                                 )}
 
@@ -390,7 +393,7 @@ export default function AdminLogin() {
                                 )}
 
                                 <button
-                                    className="bg-slate-300 text-black p-2 px-4 text-md md:text-lg !rounded-2xl"
+                                    className="bg-slate-300 text-black p-1 px-4 text-md md:text-lg !rounded-2xl"
                                     type="submit"
                                 >
                                     Signup

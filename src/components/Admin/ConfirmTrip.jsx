@@ -85,7 +85,7 @@ export default function ConfirmTrip() {
                 </h2>
 
                 <div className="w-[100%]">
-                    {pendingTrips.length === 0 ? (<p>
+                    {pendingTrips.length === 0 ? (<p className="p-4 bg-slate-100 text-black rounded-2xl mt-2">
                         No pending Trips right now.
                     </p>) : null }
                     {pendingTrips.map((trip, index) => {

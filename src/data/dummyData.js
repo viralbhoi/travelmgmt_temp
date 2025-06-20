@@ -28,8 +28,7 @@ export const dummyDrivers = [
 ];
 
 export const dummyAdmins = [
-    { id: 1, username: "Viral", password: "Viral", email: "Viral@gmail.com" },
-    { id: 2, username: "Shubham", password: "Shubham", email: "Shubham@gmail.com" },
+    { id: 1, username: "admin", password: "Admin@123", email: "admin@example.com" },
 ];
 
 export const cities = [
