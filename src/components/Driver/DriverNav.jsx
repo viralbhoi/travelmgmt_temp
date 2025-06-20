@@ -52,7 +52,7 @@ export default function DriverNav() {
                         </NavLink>
 
                         <NavLink
-                            to="/driver/trips"
+                            to="/driver/pendingtrips"
                             className={({ isActive }) =>
                                 `py-4 w-full px-3 transition-all duration-200 ease-linear ${
                                     isActive
@@ -62,7 +62,7 @@ export default function DriverNav() {
                             }
                             style={{ textDecoration: "none", color: "#F8FAFC" }}
                         >
-                            Pending Trips
+                            Pending Approvals
                         </NavLink>
 
                         <NavLink
@@ -76,7 +76,7 @@ export default function DriverNav() {
                             }
                             style={{ textDecoration: "none", color: "#F8FAFC" }}
                         >
-                            Pending Trips
+                            All trips
                         </NavLink>
 
                         <NavLink

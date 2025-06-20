@@ -119,10 +119,10 @@ export default function AdminLogin() {
         <div className="mx-0 w-screen min-h-screen bg-gray-300 flex flex-col md:flex-row justify-items-start box-border">
             <div className="flex-1/5 md:flex-1 bg-white bg-[url('/Login.jpg')] bg-no-repeat bg-center bg-fit">
                 <button
-                    className="m-5 p-3 bg-slate-900/75 rounded-2xl text-slate-50 underline"
+                    className="m-5 p-3 px-5 bg-slate-900/75 rounded-2xl text-slate-50"
                     onClick={() => navigate("/")}
                 >
-                    &larr; Back to Home
+                    <i className="fa fa-arrow-left" aria-hidden="true"></i>
                 </button>
             </div>
             <div className="flex-4/5 md:flex-1 p-5 flex flex-col gap-2 md:gap-0">
