@@ -59,7 +59,7 @@ export default function TripInfo() {
 
                             <div className="flex flex-col flex-2/12 gap-2 justify-center">
                                 <p>
-                                    {trip.pickup} → {trip.destination}
+                                    {trip.pickup} &rarr; {trip.destination}
                                 </p>
                             </div>
 

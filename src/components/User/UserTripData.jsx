@@ -26,7 +26,7 @@ export default function UserTripData() {
 
                         <div className="flex flex-col flex-3/12 justify-center">
                             <p>
-                                {trip.pickup} → {trip.destination}
+                                {trip.pickup} &rarr; {trip.destination}
                             </p>
                         </div>
 
@@ -56,7 +56,7 @@ export default function UserTripData() {
                             ) : trip.status === "approved" ? (
                                 <p className="bg-green-500 text-slate-950 p-4 rounded-2xl">
                                     {" "}
-                                    Rejected{" "}
+                                    Approved{" "}
                                 </p>
                             ) : (
                                 <p className="bg-yellow-300 text-slate-950 p-4 rounded-2xl">

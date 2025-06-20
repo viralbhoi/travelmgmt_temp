@@ -1,5 +1,5 @@
 import React from 'react'
-import UserNav from './userNav'
+import UserNav from './UserNav'
 import UserTripData from './UserTripData'
 
 export default function UserDashboard() {

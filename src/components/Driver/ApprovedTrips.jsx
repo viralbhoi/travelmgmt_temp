@@ -29,7 +29,7 @@ export default function ApprovedTrip() {
 
                         <div className="flex flex-2/12 flex-col justify-center">
                             <p>
-                                {trip.pickup} → {trip.destination}
+                                {trip.pickup} &rarr; {trip.destination}
                             </p>
                         </div>
 

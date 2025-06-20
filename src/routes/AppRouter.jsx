@@ -1,18 +1,23 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext.jsx";
-import UserDashboard from "../components/User/UserDashboard.jsx";
-import AdminDashboard from "../components/Admin/AdminDashboard.jsx";
-import DriverDashboard from "../components/Driver/DriverDashboard.jsx";
+
 import Home from "../pages/Home.jsx";
+import Login from "../pages/Login.jsx"
+
+import UserDashboard from "../components/User/UserDashboard.jsx";
 import UserTripBooking from "../components/User/UserTripBooking.jsx";
+import UserPackage from "../components/User/UserPackage.jsx";
+
+import AdminDashboard from "../components/Admin/AdminDashboard.jsx";
 import ConfirmTrip from "../components/Admin/ConfirmTrip.jsx";
 import AllTrips from "../components/Admin/AllTrips.jsx";
 import AdminPackages from "../components/Admin/AdminPackages.jsx";
+
+import DriverDashboard from "../components/Driver/DriverDashboard.jsx";
 import DriverTrip from "../components/Driver/DriverTrip.jsx";
 import DriverPackageDisplay from "../components/Driver/DriverPackageDisplay.jsx"
-import UserPackage from "../components/User/UserPackage.jsx";
 import DriverAlltrip from "../components/Driver/DriverAlltrip.jsx"
-import Login from "../pages/Login.jsx"
+
 
 export default function AppRouter() {
     const {loggedInUser} = useAppContext();
@@ -20,12 +25,6 @@ export default function AppRouter() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="user-booking" element={<UserTripBooking />} /> */}
-
-            {/* <Route path="/login" element={<UserLogin />} />
-
-            <Route path="/login" element={<AdminLogin />} /> */}
-
             <Route path="/login" element={<Login />} />
 
 

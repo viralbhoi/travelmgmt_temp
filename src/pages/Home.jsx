@@ -56,7 +56,7 @@ export default function LandingPage() {
 
   
       <footer className="bg-blue-950 text-white text-center py-4">
-        <p className="text-sm">© 2025 TravelEase. All rights reserved.</p>
+        <p className="text-sm">&copy; 2025 TravelEase. All rights reserved.</p>
       </footer>
     </div>
   );
