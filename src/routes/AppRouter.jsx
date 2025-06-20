@@ -28,7 +28,7 @@ export default function AppRouter() {
 
             <Route path="/admin/login" element={<AdminLogin />} /> */}
 
-            <Route path="//login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
 
 
 

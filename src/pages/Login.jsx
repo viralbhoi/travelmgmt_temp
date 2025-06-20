@@ -116,7 +116,7 @@ export default function AdminLogin() {
     };
 
     return (
-        <div className="mx-0 w-screen h-screen bg-gray-300 flex flex-col md:flex-row justify-items-start box-border">
+        <div className="mx-0 w-screen min-h-screen bg-gray-300 flex flex-col md:flex-row justify-items-start box-border">
             <div className="flex-1/5 md:flex-1 bg-white bg-[url('/Login.jpg')] bg-no-repeat bg-center bg-fit">
                 <button
                     className="m-5 p-3 bg-slate-900/75 rounded-2xl text-slate-50 underline"
@@ -153,7 +153,7 @@ export default function AdminLogin() {
                     </button>
                 </div>
 
-                <div className="bg-slate-800 p-5 flex-1 overflow-y-scroll  rounded-2xl md:rounded-none md:rounded-b-2xl">
+                <div className="bg-slate-800 p-5 flex-1 rounded-2xl md:rounded-none md:rounded-b-2xl">
                     <form onSubmit={handleSubmit}>
                         {islogin ? (
                             <div className="login width-[100%] flex flex-col justify-center">
@@ -281,7 +281,7 @@ export default function AdminLogin() {
                                 <div className="mb-2 flex flex-col md:flex-row">
                                     <label
                                         htmlFor="user"
-                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                        className="text-white p-1 text-lg flex-1 md:flex-1/4"
                                     >
                                         User:{" "}
                                     </label>
@@ -305,7 +305,7 @@ export default function AdminLogin() {
                                 <div className="mb-2 flex flex-col md:flex-row">
                                     <label
                                         htmlFor="username"
-                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                        className="text-white p-1 text-lg flex-1 md:flex-1/4"
                                     >
                                         Username:{" "}
                                     </label>
@@ -326,7 +326,7 @@ export default function AdminLogin() {
                                 <div className="mb-2 flex flex-col md:flex-row">
                                     <label
                                         htmlFor="email"
-                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                        className="text-white p-1 text-lg flex-1 md:flex-1/4"
                                     >
                                         Email:{" "}
                                     </label>
@@ -347,7 +347,7 @@ export default function AdminLogin() {
                                 <div className="mb-2 flex flex-col md:flex-row">
                                     <label
                                         htmlFor="password"
-                                        className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                        className="text-white p-1 text-lg flex-1 md:flex-1/4"
                                     >
                                         Password:{" "}
                                     </label>
@@ -369,7 +369,7 @@ export default function AdminLogin() {
                                     <div className="mb-2 flex flex-col md:flex-row">
                                         <label
                                             htmlFor="password"
-                                            className="text-white p-1 text-2xl flex-1 md:flex-1/4"
+                                            className="text-white p-1 text-lg flex-1 md:flex-1/4"
                                         >
                                             Vehicle:{" "}
                                         </label>
@@ -390,7 +390,7 @@ export default function AdminLogin() {
                                 )}
 
                                 <button
-                                    className="bg-slate-300 text-black p-2 px-4 text-md md:text-xl !rounded-2xl"
+                                    className="bg-slate-300 text-black p-2 px-4 text-md md:text-lg !rounded-2xl"
                                     type="submit"
                                 >
                                     Signup

@@ -10,7 +10,7 @@ export default function DriverNav() {
     return (
         <>
             {!mobileMenu && (
-                <div className="flex fixed md:hidden h-[10%] bg-slate-50 shadow-2xl p-5 w-full justify-between items-center">
+                <div className="flex  fixed md:hidden h-[10%] bg-slate-50 shadow-2xl p-5 w-full justify-between items-center">
                     <button
                         className="rounded-xl shadow-md p-4"
                         onClick={() => setMobileMenu(true)}
@@ -22,8 +22,8 @@ export default function DriverNav() {
             )}
 
             {mobileMenu && (
-                <div className="fixed md:hidden h-screen bg-slate-950 text-white  p-5 w-full justify-between items-center transition-all duration-300 ease-in-out">
-                    <div className="flex justify-between p-4 items-center">
+                <div className="fixed md:hidden h-screen bg-slate-950 text-white  p-5 w-full justify-between items-center transition-all duration-300 ease-in-out flex flex-col">
+                    <div className="flex justify-between p-4 items-center w-full">
                         <h2 className="text-xl font-semibold">Driver Panel</h2>
                         <button
                             className="rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow bg-slate-800"
@@ -36,7 +36,7 @@ export default function DriverNav() {
                         </button>
                     </div>
 
-                    <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
+                    <nav className="flex flex-1 flex-col mt-5 transition-all duration-200 ease-linear w-full">
                         <NavLink
                             to="/driver/dashboard"
                             className={({ isActive }) =>
@@ -93,23 +93,23 @@ export default function DriverNav() {
                             Packages
                         </NavLink>
 
+                    </nav>
                         <button
                             onClick={() => {
                                 setLoggedInUser(null);
-                                navigate("/driver/login");
+                                navigate("/login");
                             }}
-                            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
+                            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5 w-full"
                         >
                             Logout
                         </button>
-                    </nav>
                 </div>
             )}
 
-            <div className="hidden w-[100%] md:block md:fixed md:left-0 md:top-0  md:w-[20%] bg-slate-950 text-white h-screen">
+            <div className="hidden w-[100%] md:flex p-2 flex-col md:fixed md:left-0 md:top-0  md:w-[20%] bg-slate-950 text-white h-screen">
                 <h2 className="text-xl font-bold mb-6 p-3">Driver Panel</h2>
 
-                <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
+                <nav className="flex flex-1 flex-col mt-5 transition-all duration-200 ease-linear">
                     <NavLink
                             to="/driver/dashboard"
                             className={({ isActive }) =>
@@ -152,16 +152,16 @@ export default function DriverNav() {
                             Packages
                         </NavLink>
 
+                </nav>
                         <button
                             onClick={() => {
                                 setLoggedInUser(null);
-                                navigate("/driver/login");
+                                navigate("/login");
                             }}
-                            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
+                            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5 "
                         >
                             Logout
                         </button>
-                </nav>
             </div>
         </>
     );

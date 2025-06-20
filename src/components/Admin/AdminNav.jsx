@@ -19,8 +19,8 @@ export default function AdminNav() {
             )}
 
             {mobileMenu && (
-                <div className="fixed md:hidden h-screen bg-slate-950 text-white  p-5 w-full justify-between items-center transition-all duration-300 ease-in-out">
-                    <div className="flex justify-between p-4 items-center">
+                <div className="fixed md:hidden h-screen bg-slate-950 text-white  p-5 w-full justify-between items-center transition-all duration-300 ease-in-out flex flex-col">
+                    <div className="flex justify-between p-4 w-full items-center">
                         <h2 className="text-xl font-semibold">Admin Panel</h2>
                         <button className="rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow bg-slate-800" onClick={()=> setMobileMenu(false)}>
                             <i
@@ -30,7 +30,7 @@ export default function AdminNav() {
                         </button>
                     </div>
 
-                    <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
+                    <nav className="flex flex-col flex-1 mt-5 w-full transition-all duration-200 ease-linear">
                         <NavLink
                             to="/admin/dashboard"
                             className={({ isActive }) =>
@@ -83,23 +83,23 @@ export default function AdminNav() {
                         >
                             Manage Packages
                         </NavLink>
+                    </nav>
                         <button
                             onClick={() => {
                                 setLoggedInUser(null);
-                                navigate("/admin/login");
+                                navigate("/login");
                             }}
-                            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
+                            className="bg-red-600 hover:bg-red-700 w-full  text-white py-2 px-4 rounded mx-3 mt-5"
                         >
                             Logout
                         </button>
-                    </nav>
                 </div>
             )}
 
-            <div className="hidden w-[100%] md:block md:fixed md:left-0 md:top-0  md:w-[20%] bg-slate-950 text-white h-screen">
+            <div className="hidden w-[100%] md:flex flex-col md:fixed md:left-0 md:top-0  md:w-[20%] bg-slate-950 text-white h-screen pb-2">
                 <h2 className="text-xl font-bold mb-6 p-3">Admin Panel</h2>
 
-                <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
+                <nav className="flex flex-1 flex-col mt-5 transition-all duration-200 ease-linear">
                     <NavLink
                         to="/admin/dashboard"
                         className={({ isActive }) =>
@@ -152,16 +152,16 @@ export default function AdminNav() {
                     >
                         Manage Packages
                     </NavLink>
+                </nav>
                     <button
                         onClick={() => {
                             setLoggedInUser(null);
-                            navigate("/admin/login");
+                            navigate("/login");
                         }}
                         className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
                     >
                         Logout
                     </button>
-                </nav>
             </div>
         </>
     );
