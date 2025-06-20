@@ -4,13 +4,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 export default function Home() {
     const navigate = useNavigate();
     const handleUser = () => {
-        navigate("/user/login");
+        navigate("/login");
     };
     const handleDriver = () => {
-        navigate("/driver/login");
+        navigate("/login");
     };
     const handleAdmin = () => {
-        navigate("/admin/login");
+        navigate("/login");
     };
     return (
         <div className="m-0 h-screen bg-[url('Background.jpg')] bg-no-repeat bg-center bg-fit ">

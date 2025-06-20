@@ -22,8 +22,8 @@ export default function UserNav() {
             )}
 
             {mobileMenu && (
-                <div className="fixed md:hidden h-screen bg-slate-950 text-white  p-5 w-full justify-between items-center transition-all duration-300 ease-in-out">
-                    <div className="flex justify-between p-4 items-center">
+                <div className="fixed md:hidden h-screen bg-slate-950 text-white  p-5 w-full justify-between items-center transition-all duration-300 ease-in-out flex-col">
+                    <div className="flex flex-1/12 justify-between p-4 items-center">
                         <h2 className="text-xl font-semibold">User Panel</h2>
                         <button
                             className="rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow bg-slate-800"
@@ -36,7 +36,7 @@ export default function UserNav() {
                         </button>
                     </div>
 
-                    <nav className="flex flex-col mt-5 transition-all duration-200 ease-linear">
+                    <nav className="flex flex-1 flex-col mt-5 transition-all duration-200 ease-linear">
                         <NavLink
                         to="/user/dashboard"
                         className={({ isActive }) =>
@@ -79,16 +79,16 @@ export default function UserNav() {
                         Packages
                     </NavLink>
 
+                    </nav>
                     <button
                         onClick={() => {
                             setLoggedInUser(null);
                             navigate("/user/login");
                         }}
-                        className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5"
+                        className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mx-3 mt-5 flex-1/12"
                     >
                         Logout
                     </button>
-                    </nav>
                 </div>
             )}
 

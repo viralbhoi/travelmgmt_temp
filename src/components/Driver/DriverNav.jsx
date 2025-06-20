@@ -62,7 +62,21 @@ export default function DriverNav() {
                             }
                             style={{ textDecoration: "none", color: "#F8FAFC" }}
                         >
-                            Booking
+                            Pending Trips
+                        </NavLink>
+
+                        <NavLink
+                            to="/driver/alltrips"
+                            className={({ isActive }) =>
+                                `py-4 w-full px-3 transition-all duration-200 ease-linear ${
+                                    isActive
+                                        ? "bg-slate-900 text-slate-50 font-semibold"
+                                        : "hover:bg-slate-900"
+                                }`
+                            }
+                            style={{ textDecoration: "none", color: "#F8FAFC" }}
+                        >
+                            Pending Trips
                         </NavLink>
 
                         <NavLink

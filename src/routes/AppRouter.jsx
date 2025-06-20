@@ -14,6 +14,7 @@ import AdminPackages from "../components/Admin/AdminPackages.jsx";
 import DriverTrip from "../components/Driver/DriverTrip.jsx";
 import DriverPackageDisplay from "../components/Driver/DriverPackageDisplay.jsx"
 import UserPackage from "../components/User/UserPackage.jsx";
+import Login from "../pages/Login.jsx"
 
 export default function AppRouter() {
     const {loggedInUser} = useAppContext();
@@ -23,11 +24,11 @@ export default function AppRouter() {
             <Route path="/" element={<Home />} />
             {/* <Route path="user-booking" element={<UserTripBooking />} /> */}
 
-            <Route path="/user/login" element={<UserLogin />} />
+            {/* <Route path="/user/login" element={<UserLogin />} />
 
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/login" element={<AdminLogin />} /> */}
 
-            <Route path="/driver/login" element={<DriverLogin />} />
+            <Route path="//login" element={<Login />} />
 
 
 

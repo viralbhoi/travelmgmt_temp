@@ -107,11 +107,17 @@ export default function AdminLogin() {
                             </div>
 
                             <button
-                                className="bg-slate-300 mt-5 text-black p-2 px-4 text-md md:text-xl !rounded-2xl flex-1"
+                                className="bg-slate-300 mt-5 text-black p-1 px-4 text-md md:text-lg !rounded-2xl flex-1"
                                 type="submit"
                             >
                                 Login
                             </button>
+
+                            <div className="border rounded-2xl text-slate-50 p-5 mt-3">
+                                <h3 className="font-semibold text-xl underline pb-6">Dummy Credentials:</h3>
+                                <p>Email: Viral@gmail.com </p>
+                                <p>Password : Viral</p>
+                            </div>
                         </div>
                     </form>
                 </div>

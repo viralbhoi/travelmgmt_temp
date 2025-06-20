@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import AdminNav from "./AdminNav";
 import { useAppContext } from "../../context/AppContext";
 import Card from "../General/Card";
-import TripDataTable from "./TripDataTable";
 
 export default function AdminDashboard() {
     const { trips, users, drivers } = useAppContext();

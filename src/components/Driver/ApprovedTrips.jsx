@@ -1,43 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 
-export default function TripInfo() {
-    const { loggedInUser, trips, setTrips, drivers, users } = useAppContext();
+export default function ApprovedTrip() {
+    const { loggedInUser, trips, users } = useAppContext();
 
     const [driverTrips, setDriverTrips] = useState([]);
 
     useEffect(() => {
         setDriverTrips(
-            trips.filter((trip) => (trip.driverEmail === loggedInUser.email && trip.status === "assigned"))
+            trips.filter((trip) => (trip.driverEmail === loggedInUser.email && trip.status === "approved"))
         );
     }, [trips]);
 
-    const handleApproveTrip = (tripID) => {
-        const updatedTrips = trips.map((trip) =>
-            trip.id === tripID
-                ? {
-                      ...trip,
-                      status: "approved",
-                  }
-                : trip
-        );
-
-        setTrips(updatedTrips);
-    };
-
-    const handleRejectTrip = (tripID) => {
-        const updatedTrips = trips.map((trip) =>
-            trip.id === tripID
-                ? {
-                      ...trip,
-                      status: "pending",
-                      driverEmail: null,
-                  }
-                : trip
-        );
-
-        setTrips(updatedTrips);
-    };
+    
 
     return (
         <div className="flex flex-col p-2 mt-4 gap-4">
@@ -73,18 +48,11 @@ export default function TripInfo() {
                         </div>
 
                         <div className="flex flex-col gap-2 justify-center">
-                            <button
-                                onClick={() => handleApproveTrip(trip.id)}
+                            <div
                                 className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
                             >
                                 Approved
-                            </button>
-                            <button
-                                onClick={() => handleRejectTrip(trip.id)}
-                                className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
-                            >
-                                Reject
-                            </button>
+                            </div>
                         </div>
                     </div>
                 );

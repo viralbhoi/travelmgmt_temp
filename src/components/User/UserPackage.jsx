@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserNav from "./UserNav";
+import UserNav from "./userNav";
 import { useAppContext } from "../../context/AppContext";
 
 export default function UserPackage() {
